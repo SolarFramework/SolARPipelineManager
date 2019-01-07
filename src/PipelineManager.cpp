@@ -1,0 +1,120 @@
+#include "PipelineManager.h"
+#include "xpcf/core/uuid.h"
+#include "xpcf/core/Exception.h"
+#include <iostream>
+
+
+namespace SolAR {
+using namespace datastructure;
+using namespace api::pipeline;
+namespace PIPELINE {
+
+
+void PipelineManager::Pose::reset()
+{
+	for( int i = 0; i < 3; ++i )
+	{
+		for( int j = 0; j < 3; ++j )
+		{
+			R[i][j] = 0.f;
+		}
+		T[i] = 0.f;
+		R[i][i] = 1.f;//Set diagonal to 1;
+	}
+}
+
+PipelineManager::PipelineManager() : m_pipeline( nullptr )
+{
+
+}
+
+PipelineManager::~PipelineManager()
+{
+    if( m_pipeline != nullptr )
+	{
+        m_pipeline->stop();
+        m_pipeline = nullptr;
+	}
+}
+
+bool PipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+{
+    LOG_INFO("Start PipelineManager::init")
+    SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
+	bool load_ok = false;
+	try{
+                if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
+                        load_ok = true;
+    }
+	catch (const std::exception& exception)
+	{
+		std::cout << exception.what() << std::endl;
+		return false;
+	}
+
+	if (!load_ok)
+		return false;
+
+    m_pipeline = xpcfComponentManager->createComponent<IPipeline>(xpcf::toUUID(pipelineUUID))->bindTo<api::pipeline::IPipeline>();
+    LOG_INFO("Pipeline Component has been created")
+
+    if (m_pipeline == nullptr)
+        return false;
+
+    return (m_pipeline->init(xpcfComponentManager)== FrameworkReturnCode::_SUCCESS);
+
+}
+
+PipelineManager::CamParams PipelineManager::getCameraParameters()
+{
+    CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
+    CamParams camParams;
+    camParams.width = cameraParameters.width;
+    camParams.height = cameraParameters.height;
+    camParams.focalX = cameraParameters.focalX;
+    camParams.focalY = cameraParameters.focalY;
+
+    return camParams;
+}
+
+bool PipelineManager::start(void* textureHandle)
+{
+    if( m_pipeline == nullptr )
+         return false;
+
+    return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);
+
+	
+}
+
+bool PipelineManager::udpate(PipelineManager::Pose& pose)
+{
+    if (m_pipeline == nullptr)
+        return false;
+
+    Transform3Df solarPose;
+    if (m_pipeline->update(solarPose) == FrameworkReturnCode::_ERROR_)
+        return false;
+
+    pose.T[0] = solarPose.translation()(0);
+    pose.T[1] = solarPose.translation()(1);
+    pose.T[2] = solarPose.translation()(2);
+
+    pose.R[0][0] = solarPose.rotation()(0,0);
+    pose.R[0][1] = solarPose.rotation()(0,1);
+    pose.R[0][2] = solarPose.rotation()(0,2);
+    pose.R[1][0] = solarPose.rotation()(1,0);
+    pose.R[1][1] = solarPose.rotation()(1,1);
+    pose.R[1][2] = solarPose.rotation()(1,2);
+    pose.R[2][0] = solarPose.rotation()(2,0);
+    pose.R[2][1] = solarPose.rotation()(2,1);
+    pose.R[2][2] = solarPose.rotation()(2,2);
+
+    return true;
+
+}
+
+
+}
+}
+

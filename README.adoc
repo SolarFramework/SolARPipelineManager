@@ -1,4 +1,4 @@
-# SolARPipelineManager
+= SolARPipelineManager Repository
 
 To build the SolARPipelineManager, first run the BuildCSharp.bat. This script will generate first a PipelineManager_wrap.cpp file in yrou src folder, and a set of csharp files in your CSharp/SolAR/PipelineManager folder.
 
