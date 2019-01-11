@@ -1,12 +1,14 @@
 #include "PipelineManager.h"
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
+#include "core/Log.h"
 #include <iostream>
 
 
 namespace SolAR {
 using namespace datastructure;
 using namespace api::pipeline;
+using namespace api::sink;
 namespace PIPELINE {
 
 
@@ -30,21 +32,18 @@ PipelineManager::PipelineManager() : m_pipeline( nullptr )
 
 PipelineManager::~PipelineManager()
 {
-    if( m_pipeline != nullptr )
-	{
-        m_pipeline->stop();
-        m_pipeline = nullptr;
-	}
 }
 
 bool PipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
 {
     LOG_INFO("Start PipelineManager::init")
+    LOG_FLUSH
     SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
 	bool load_ok = false;
 	try{
-                if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
-                        load_ok = true;
+            if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
+            //if (xpcfComponentManager->load("F:/Dev/SolAR/sources/Plugins/Unity/Assets/StreamingAssets/Pipelines/PipelineFiducialMarker.xml") == org::bcom::xpcf::_SUCCESS)
+				load_ok = true;
     }
 	catch (const std::exception& exception)
 	{
@@ -82,9 +81,7 @@ bool PipelineManager::start(void* textureHandle)
     if( m_pipeline == nullptr )
          return false;
 
-    return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);
-
-	
+    return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
 
 bool PipelineManager::udpate(PipelineManager::Pose& pose)
@@ -93,24 +90,31 @@ bool PipelineManager::udpate(PipelineManager::Pose& pose)
         return false;
 
     Transform3Df solarPose;
-    if (m_pipeline->update(solarPose) == FrameworkReturnCode::_ERROR_)
+    SinkReturnCode returnCode = m_pipeline->update(solarPose);
+    if (returnCode == SinkReturnCode::_ERROR)
         return false;
 
-    pose.T[0] = solarPose.translation()(0);
-    pose.T[1] = solarPose.translation()(1);
-    pose.T[2] = solarPose.translation()(2);
+    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
+    {
+        pose.T[0] = solarPose.translation()(0);
+        pose.T[1] = solarPose.translation()(1);
+        pose.T[2] = solarPose.translation()(2);
 
-    pose.R[0][0] = solarPose.rotation()(0,0);
-    pose.R[0][1] = solarPose.rotation()(0,1);
-    pose.R[0][2] = solarPose.rotation()(0,2);
-    pose.R[1][0] = solarPose.rotation()(1,0);
-    pose.R[1][1] = solarPose.rotation()(1,1);
-    pose.R[1][2] = solarPose.rotation()(1,2);
-    pose.R[2][0] = solarPose.rotation()(2,0);
-    pose.R[2][1] = solarPose.rotation()(2,1);
-    pose.R[2][2] = solarPose.rotation()(2,2);
+        pose.R[0][0] = solarPose.rotation()(0,0);
+        pose.R[0][1] = solarPose.rotation()(0,1);
+        pose.R[0][2] = solarPose.rotation()(0,2);
+        pose.R[1][0] = solarPose.rotation()(1,0);
+        pose.R[1][1] = solarPose.rotation()(1,1);
+        pose.R[1][2] = solarPose.rotation()(1,2);
+        pose.R[2][0] = solarPose.rotation()(2,0);
+        pose.R[2][1] = solarPose.rotation()(2,1);
+        pose.R[2][2] = solarPose.rotation()(2,2);
+        return true;
+    }
 
-    return true;
+    // return false if the pose has not been updated
+    // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
+    return false;
 
 }
 

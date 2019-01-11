@@ -679,6 +679,9 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_udpate(void * j
   arg2 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg2; if (!arg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "SolAR::PIPELINE::PipelineManager::Pose & type is null", 0);
     return 0; }   result = (bool)(arg1)->udpate(*arg2); jresult = result;  return jresult; }
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_stop(void * jarg1) { unsigned int jresult ;
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; bool result;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  result = (bool)(arg1)->stop(); jresult = result;  return jresult; }
 #ifdef __cplusplus
 }
 #endif
