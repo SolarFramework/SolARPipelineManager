@@ -114,6 +114,14 @@ bool PipelineManager::udpate(PipelineManager::Pose& pose)
 
 }
 
+bool PipelineManager::stop()
+{
+    if (m_pipeline != nullptr)
+    {
+        return (m_pipeline->stop() == FrameworkReturnCode::_SUCCESS);
+    }
+    return true;
+}
 
 }
 }

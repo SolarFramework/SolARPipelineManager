@@ -58,6 +58,8 @@ public:
 
     bool udpate(Pose& pose);
 
+    bool stop();
+
 private:
     SRef<api::pipeline::IPipeline> m_pipeline;
 
