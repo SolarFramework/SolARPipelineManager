@@ -15,7 +15,7 @@
 *.o
 *.obj
 
-.\build
+build/
 
 # Precompiled Headers
 *.gch
@@ -54,7 +54,7 @@
 # Visual Studio files
 .vs*
 x64*
-build*
+
 
 *.log
 *.tlog
