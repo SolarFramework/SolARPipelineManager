@@ -23,9 +23,21 @@
 
 namespace SolAR {
 namespace PIPELINE {
+
+enum PIPELINEMANAGER_RETURNCODE {
+
+    _NOT_IMPLEMENTED= -2,
+    _ERROR= -1,
+    _NOTHING = 0,
+    _NEW_IMAGE= 0x01,
+    _NEW_POSE= 0x02,
+    _NEW_POSE_AND_IMAGE = 0x03,
+};
+
 class PIPELINEMANAGER_INTERFACE_EXPORT PipelineManager
 {
 public:
+
 
     struct Pose
 	{
@@ -56,7 +68,7 @@ public:
 
     bool start(void* textureHandle);
 
-    bool udpate(Pose& pose);
+    PIPELINEMANAGER_RETURNCODE udpate(Pose& pose);
 
     bool stop();
 
