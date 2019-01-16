@@ -60,6 +60,8 @@ public:
 
     bool udpate(Pose& pose);
 
+	void updateFrameDataOGL(int eventID);
+
     bool stop();
 
 private:
