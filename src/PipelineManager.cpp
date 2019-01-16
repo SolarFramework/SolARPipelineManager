@@ -27,7 +27,7 @@ void PipelineManager::Pose::reset()
 
 PipelineManager::PipelineManager() : m_pipeline( nullptr )
 {
-
+	LOG_INFO("Pipeline Manager Constructor");
 }
 
 PipelineManager::~PipelineManager()
@@ -42,8 +42,7 @@ bool PipelineManager::init( const std::string& conf_path, const std::string& pip
 	bool load_ok = false;
 	try{
             if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
-            //if (xpcfComponentManager->load("F:/Dev/SolAR/sources/Plugins/Unity/Assets/StreamingAssets/Pipelines/PipelineFiducialMarker.xml") == org::bcom::xpcf::_SUCCESS)
-				load_ok = true;
+            	load_ok = true;
     }
 	catch (const std::exception& exception)
 	{

@@ -15,11 +15,6 @@ set (HEADERS
 	interfaces/ConsoleRedirector.h
 )
 
-#find_package(PCL REQUIRED)
-
-include_directories(
-	src/
-)
 
 #install (FILES "${CMAKE_CURRENT_SOURCE_DIR}/xpcf_SolARPipelineManager_registry.xml" DESTINATION $ENV{BCOMDEVROOT}/.xpcf/SolAR/	)
 
