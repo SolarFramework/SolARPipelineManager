@@ -118,6 +118,14 @@ bool PipelineManager::udpate(PipelineManager::Pose& pose)
 
 }
 
+void PipelineManager::updateFrameDataOGL(int eventID)
+{
+	if (m_pipeline != nullptr)
+	{
+        m_pipeline->updateFrameDataOGL(eventID);
+	}
+}
+
 bool PipelineManager::stop()
 {
     if (m_pipeline != nullptr)
