@@ -83,15 +83,15 @@ bool PipelineManager::start(void* textureHandle)
     return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
 
-bool PipelineManager::udpate(PipelineManager::Pose& pose)
+PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
 {
     if (m_pipeline == nullptr)
-        return false;
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
 
     Transform3Df solarPose;
     SinkReturnCode returnCode = m_pipeline->update(solarPose);
     if (returnCode == SinkReturnCode::_ERROR)
-        return false;
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
 
     if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
     {
@@ -108,12 +108,13 @@ bool PipelineManager::udpate(PipelineManager::Pose& pose)
         pose.R[2][0] = solarPose.rotation()(2,0);
         pose.R[2][1] = solarPose.rotation()(2,1);
         pose.R[2][2] = solarPose.rotation()(2,2);
-        return true;
+        return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
     }
 
+    std::cout <<" no new pose \n";
     // return false if the pose has not been updated
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
-    return false;
+    return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 
 }
 
