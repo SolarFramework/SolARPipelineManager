@@ -119,6 +119,34 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
 
 }
 
+void PipelineManager::udpatePose(void* pose)
+{
+     if (m_pipeline == nullptr)
+        return ;
+
+    Transform3Df solarPose;
+    SinkReturnCode returnCode = m_pipeline->update(solarPose);
+    if (returnCode == SinkReturnCode::_ERROR)
+        return ;
+
+    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
+    {
+        std::cout <<"  new pose \n";
+        float* tmp2=solarPose.matrix().data();
+        float* tmp1=(float*)pose;
+        for(int i=0;i<16;i++)
+            tmp1[i]=tmp2[i];
+
+        return ;
+    }
+
+    std::cout <<" no new pose \n";
+    // return false if the pose has not been updated
+    // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
+    return ;
+
+}
+
 bool PipelineManager::stop()
 {
     if (m_pipeline != nullptr)
