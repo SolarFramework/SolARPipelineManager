@@ -70,6 +70,8 @@ public:
 
     PIPELINEMANAGER_RETURNCODE udpate(Pose& pose);
 
+    void udpatePose(void* pose);
+
     bool stop();
 
 private:
