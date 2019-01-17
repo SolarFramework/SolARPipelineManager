@@ -27,7 +27,7 @@ void PipelineManager::Pose::reset()
 
 PipelineManager::PipelineManager() : m_pipeline( nullptr )
 {
-
+	LOG_INFO("Pipeline Manager Constructor");
 }
 
 PipelineManager::~PipelineManager()
@@ -144,7 +144,14 @@ void PipelineManager::udpatePose(void* pose)
     // return false if the pose has not been updated
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return ;
+}
 
+void PipelineManager::updateFrameDataOGL(int eventID)
+{
+	if (m_pipeline != nullptr)
+	{
+        m_pipeline->updateFrameDataOGL(eventID);
+	}
 }
 
 bool PipelineManager::stop()
