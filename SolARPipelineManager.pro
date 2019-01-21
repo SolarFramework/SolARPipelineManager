@@ -40,12 +40,16 @@ INCLUDEPATH += interfaces/
 HEADERS += \
     interfaces/PipelineManager.h \
     interfaces/ConsoleRedirector.h \
-    interfaces/PipelineManagerAPI.h
+    interfaces/PipelineManagerAPI.h \
+	interfaces\Unity\IUnityGraphics.h \
+	interfaces\Unity\IUnityInterface.h \
+	interfaces\Unity\UnityPluginInterface.h
 
 SOURCES += \ 
-    src/PipelineManager_wrap.cpp \
-    src/PipelineManager.cpp \
-    src/ConsoleRedirector.cpp
+    src\PipelineManager_wrap.cpp \
+    src\PipelineManager.cpp \
+    src\ConsoleRedirector.cpp \
+	src\Unity\UnityPluginInterface.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
