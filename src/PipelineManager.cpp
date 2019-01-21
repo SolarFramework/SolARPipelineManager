@@ -42,7 +42,8 @@ bool PipelineManager::init( const std::string& conf_path, const std::string& pip
 	bool load_ok = false;
 	try{
             if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
-            	load_ok = true;
+            //if (xpcfComponentManager->load("F:/Dev/SolAR/sources/Plugins/Unity/Assets/StreamingAssets/Pipelines/PipelineFiducialMarker.xml") == org::bcom::xpcf::_SUCCESS)
+				load_ok = true;
     }
 	catch (const std::exception& exception)
 	{
@@ -116,6 +117,33 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 
+}
+
+void PipelineManager::udpatePose(void* pose)
+{
+     if (m_pipeline == nullptr)
+        return ;
+
+    Transform3Df solarPose;
+    SinkReturnCode returnCode = m_pipeline->update(solarPose);
+    if (returnCode == SinkReturnCode::_ERROR)
+        return ;
+
+    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
+    {
+        std::cout <<"  new pose \n";
+        float* tmp2=solarPose.matrix().data();
+        float* tmp1=(float*)pose;
+        for(int i=0;i<16;i++)
+            tmp1[i]=tmp2[i];
+
+        return ;
+    }
+
+    std::cout <<" no new pose \n";
+    // return false if the pose has not been updated
+    // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
+    return ;
 }
 
 void PipelineManager::updateFrameDataOGL(int eventID)

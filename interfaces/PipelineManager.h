@@ -72,6 +72,8 @@ public:
 
     PIPELINEMANAGER_RETURNCODE udpate(Pose& pose);
 
+    void udpatePose(void* pose);
+
 	void updateFrameDataOGL(int eventID);
 
     bool stop();
