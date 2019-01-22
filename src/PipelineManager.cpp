@@ -32,6 +32,7 @@ PipelineManager::PipelineManager() : m_pipeline( nullptr )
 
 PipelineManager::~PipelineManager()
 {
+	xpcf::getComponentManagerInstance()->clear();
 }
 
 bool PipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
