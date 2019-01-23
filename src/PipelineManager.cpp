@@ -147,14 +147,6 @@ void PipelineManager::udpatePose(void* pose)
     return ;
 }
 
-void PipelineManager::updateFrameDataOGL(int eventID)
-{
-	if (m_pipeline != nullptr)
-	{
-        m_pipeline->updateFrameDataOGL(eventID);
-	}
-}
-
 bool PipelineManager::stop()
 {
     if (m_pipeline != nullptr)

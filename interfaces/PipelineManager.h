@@ -74,8 +74,6 @@ public:
 
     void udpatePose(void* pose);
 
-	void updateFrameDataOGL(int eventID);
-
     bool stop();
 
 private:

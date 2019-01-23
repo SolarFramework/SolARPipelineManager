@@ -697,9 +697,6 @@ SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_udpate(void * jarg1, voi
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_udpatePose(void * jarg1, void * jarg2) {
   SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ;
   arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (void *)jarg2;  (arg1)->udpatePose(arg2); }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_updateFrameDataOGL(void * jarg1, int jarg2) {
-  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; int arg2 ;
-  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (int)jarg2;  (arg1)->updateFrameDataOGL(arg2); }
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_stop(void * jarg1) { unsigned int jresult ;
   SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; bool result;
   arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  result = (bool)(arg1)->stop(); jresult = result;  return jresult; }
