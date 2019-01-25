@@ -9,6 +9,7 @@ namespace SolAR {
 using namespace datastructure;
 using namespace api::pipeline;
 using namespace api::sink;
+using namespace api::source;
 namespace PIPELINE {
 
 
@@ -75,6 +76,18 @@ PipelineManager::CamParams PipelineManager::getCameraParameters()
     camParams.focalY = cameraParameters.focalY;
 
     return camParams;
+}
+
+PIPELINEMANAGER_RETURNCODE PipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
+{
+    if (m_pipeline == nullptr)
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
+
+    SourceReturnCode returnCode = m_pipeline->loadSourceImage(sourceTextureHandle,width,height);
+    if (returnCode == SourceReturnCode::_ERROR)
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
+
+    return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 }
 
 bool PipelineManager::start(void* textureHandle)

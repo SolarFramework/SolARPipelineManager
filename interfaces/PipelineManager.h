@@ -72,6 +72,8 @@ public:
 
     PIPELINEMANAGER_RETURNCODE udpate(Pose& pose);
 
+    PIPELINEMANAGER_RETURNCODE loadSourceImage(void* sourceTextureHandle, int width, int height);
+
     void udpatePose(void* pose);
 
     bool stop();

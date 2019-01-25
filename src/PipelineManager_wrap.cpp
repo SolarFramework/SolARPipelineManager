@@ -694,6 +694,12 @@ SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_udpate(void * jarg1, voi
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "SolAR::PIPELINE::PipelineManager::Pose & type is null", 0);
     return 0; }   result = (SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE)(arg1)->udpate(*arg2); jresult = (int)result; 
   return jresult; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_loadSourceImage(void * jarg1, void * jarg2, int jarg3, int jarg4) {
+  int jresult ; SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ;
+  int arg3 ; int arg4 ; SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE result; arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1; 
+  arg2 = (void *)jarg2;  arg3 = (int)jarg3;  arg4 = (int)jarg4; 
+  result = (SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE)(arg1)->loadSourceImage(arg2,arg3,arg4); jresult = (int)result; 
+  return jresult; }
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_udpatePose(void * jarg1, void * jarg2) {
   SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ;
   arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (void *)jarg2;  (arg1)->udpatePose(arg2); }
