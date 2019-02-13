@@ -126,7 +126,7 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
         return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
     }
 
-    std::cout <<" no new pose \n";
+//    std::cout <<" no new pose \n";
     // return false if the pose has not been updated
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
@@ -154,7 +154,7 @@ void PipelineManager::udpatePose(void* pose)
         return ;
     }
 
-    std::cout <<" no new pose \n";
+//    std::cout <<" no new pose \n";
     // return false if the pose has not been updated
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return ;
