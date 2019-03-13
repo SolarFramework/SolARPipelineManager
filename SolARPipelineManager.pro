@@ -36,20 +36,28 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 }
 
 INCLUDEPATH += interfaces/
+msvc {
+HEADERS += \
+        interfaces/ConsoleRedirector.h \
+        interfaces\Unity\IUnityGraphics.h \
+        interfaces\Unity\IUnityInterface.h \
+        interfaces\Unity\UnityPluginInterface.h
+}
 
 HEADERS += \
     interfaces/PipelineManager.h \
-    interfaces/ConsoleRedirector.h \
-    interfaces/PipelineManagerAPI.h \
-	interfaces\Unity\IUnityGraphics.h \
-	interfaces\Unity\IUnityInterface.h \
-	interfaces\Unity\UnityPluginInterface.h
+    interfaces/PipelineManagerAPI.h
 
-SOURCES += \ 
-    src\PipelineManager_wrap.cpp \
-    src\PipelineManager.cpp \
-    src\ConsoleRedirector.cpp \
-	src\Unity\UnityPluginInterface.cpp
+
+msvc {
+SOURCES += \
+     src/ConsoleRedirector.cpp \
+    src/Unity/UnityPluginInterface.cpp
+}
+
+SOURCES += \
+    src/PipelineManager_wrap.cpp \
+    src/PipelineManager.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
