@@ -74,6 +74,8 @@ PipelineManager::CamParams PipelineManager::getCameraParameters()
     camParams.height = cameraParameters.height;
     camParams.focalX = cameraParameters.focalX;
     camParams.focalY = cameraParameters.focalY;
+    camParams.centerX = cameraParameters.centerX;
+    camParams.centerY = cameraParameters.centerY;
 
     return camParams;
 }
