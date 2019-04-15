@@ -42,6 +42,7 @@ bool PipelineManager::init( const std::string& conf_path, const std::string& pip
     LOG_FLUSH
     SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
 	bool load_ok = false;
+    LOG_INFO("conf_path : {}", conf_path.c_str())
 	try{
             if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
             //if (xpcfComponentManager->load("F:/Dev/SolAR/sources/Plugins/Unity/Assets/StreamingAssets/Pipelines/PipelineFiducialMarker.xml") == org::bcom::xpcf::_SUCCESS)
