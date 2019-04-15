@@ -45,7 +45,7 @@ HEADERS += \
 }
 
 HEADERS += \
-    interfaces/PipelineManager.h \
+    interfaces/SolARPluginPipelineManager.h \
     interfaces/PipelineManagerAPI.h
 
 
@@ -57,7 +57,7 @@ SOURCES += \
 
 SOURCES += \
     src/PipelineManager_wrap.cpp \
-    src/PipelineManager.cpp
+    src/SolARPluginPipelineManager.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers

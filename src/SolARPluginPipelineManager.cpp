@@ -1,4 +1,4 @@
-#include "PipelineManager.h"
+#include "SolARPluginPipelineManager.h"
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
 #include "core/Log.h"
@@ -13,7 +13,7 @@ using namespace api::source;
 namespace PIPELINE {
 
 
-void PipelineManager::Pose::reset()
+void SolARPluginPipelineManager::Pose::reset()
 {
 	for( int i = 0; i < 3; ++i )
 	{
@@ -26,19 +26,19 @@ void PipelineManager::Pose::reset()
 	}
 }
 
-PipelineManager::PipelineManager() : m_pipeline( nullptr )
+SolARPluginPipelineManager::SolARPluginPipelineManager() : m_pipeline( nullptr )
 {
 	LOG_INFO("Pipeline Manager Constructor");
 }
 
-PipelineManager::~PipelineManager()
+SolARPluginPipelineManager::~SolARPluginPipelineManager()
 {
 	xpcf::getComponentManagerInstance()->clear();
 }
 
-bool PipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
 {
-    LOG_INFO("Start PipelineManager::init")
+    LOG_INFO("Start SolARPluginPipelineManager::init")
     LOG_FLUSH
     SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
 	bool load_ok = false;
@@ -67,7 +67,7 @@ bool PipelineManager::init( const std::string& conf_path, const std::string& pip
 
 }
 
-PipelineManager::CamParams PipelineManager::getCameraParameters()
+SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParameters()
 {
     CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
     CamParams camParams;
@@ -81,7 +81,7 @@ PipelineManager::CamParams PipelineManager::getCameraParameters()
     return camParams;
 }
 
-PIPELINEMANAGER_RETURNCODE PipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
+PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
 {
     if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
@@ -93,7 +93,7 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::loadSourceImage(void* sourceTextureH
     return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 }
 
-bool PipelineManager::start(void* textureHandle)
+bool SolARPluginPipelineManager::start(void* textureHandle)
 {
     if( m_pipeline == nullptr )
          return false;
@@ -101,7 +101,7 @@ bool PipelineManager::start(void* textureHandle)
     return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
 
-PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
+PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(SolARPluginPipelineManager::Pose& pose)
 {
     if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
@@ -136,7 +136,7 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
 
 }
 
-void PipelineManager::udpatePose(void* pose)
+void SolARPluginPipelineManager::udpatePose(void* pose)
 {
      if (m_pipeline == nullptr)
         return ;
@@ -163,7 +163,7 @@ void PipelineManager::udpatePose(void* pose)
     return ;
 }
 
-bool PipelineManager::stop()
+bool SolARPluginPipelineManager::stop()
 {
     if (m_pipeline != nullptr)
     {
