@@ -7,7 +7,7 @@ set (SOURCES
 	src/ConsoleRedirector.cpp 
     src/Unity/UnityPluginInterface.cpp
 	src/PipelineManager_wrap.cpp
-    src/SolARPluginPipelineManager.cpp
+    src/PipelineManager.cpp
 )
 
 set (HEADERS
@@ -15,7 +15,7 @@ set (HEADERS
     interfaces/Unity/IUnityGraphics.h
     interfaces/Unity/IUnityInterface.h
     interfaces/Unity/UnityPluginInterface.h
-	interfaces/SolARPluginPipelineManager.h
+	interfaces/PipelineManager.h
     interfaces/PipelineManagerAPI.h
 	
 )

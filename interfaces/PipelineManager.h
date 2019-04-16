@@ -34,7 +34,7 @@ enum PIPELINEMANAGER_RETURNCODE {
     _NEW_POSE_AND_IMAGE = 0x03,
 };
 
-class PIPELINEMANAGER_INTERFACE_EXPORT SolARPluginPipelineManager
+class PIPELINEMANAGER_INTERFACE_EXPORT PipelineManager
 {
 public:
 
@@ -61,8 +61,8 @@ public:
     };
 
 public:
-    SolARPluginPipelineManager();
-    ~SolARPluginPipelineManager();
+    PipelineManager();
+    ~PipelineManager();
 
     bool init( const std::string& conf_path, const std::string& pipelineUUID);
 

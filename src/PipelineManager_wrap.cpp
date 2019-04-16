@@ -578,144 +578,134 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_StringVector_Remove(void * jarg
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_StringVector(void * jarg1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; arg1 = (std::vector< std::string > *)jarg1; 
   delete arg1; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_T_set(void * jarg1, void * jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  float *arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  arg2 = (float *)jarg2;  { size_t ii;
-    float *b = (float *) arg1->T; for (ii = 0; ii < (size_t)3; ii++) b[ii] = *((float *) arg2 + ii); }  }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_T_get(void * jarg1) { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  float *result = 0 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1; 
-  result = (float *)(float *) ((arg1)->T); jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_R_set(void * jarg1, void * jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  float (*arg2)[3] ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  arg2 = (float (*)[3])jarg2;  {
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_T_set(void * jarg1, void * jarg2) {
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; float *arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  arg2 = (float *)jarg2;  { size_t ii; float *b = (float *) arg1->T;
+    for (ii = 0; ii < (size_t)3; ii++) b[ii] = *((float *) arg2 + ii); }  }
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_T_get(void * jarg1) { void * jresult ;
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; float *result = 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  result = (float *)(float *) ((arg1)->T); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_R_set(void * jarg1, void * jarg2) {
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; float (*arg2)[3] ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  arg2 = (float (*)[3])jarg2;  {
     float (*inp)[3] = (float (*)[3])(arg2); float (*dest)[3] = (float (*)[3])(arg1->R); size_t ii = 0; for (; ii < 3; ++ii) {
       float *ip = inp[ii]; float *dp = dest[ii]; size_t jj = 0; for (; jj < 3; ++jj) dp[jj] = ip[jj]; }  }  }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_R_get(void * jarg1) { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  float (*result)[3] = 0 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1; 
-  result = (float (*)[3])(float (*)[3]) ((arg1)->R); jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_reset(void * jarg1) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  (arg1)->reset(); }
-SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_translation(void * jarg1, int jarg2) { float jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ; int arg2 ;
-  float result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  arg2 = (int)jarg2; 
-  result = (float)(arg1)->translation(arg2); jresult = result;  return jresult; }
-SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_Pose_rotation(void * jarg1, int jarg2, int jarg3) {
-  float jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ; int arg2 ;
-  int arg3 ; float result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  arg2 = (int)jarg2; 
-  arg3 = (int)jarg3;  result = (float)(arg1)->rotation(arg2,arg3); jresult = result;  return jresult; }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_SolARPluginPipelineManager_Pose() { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *result = 0 ;
-  result = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)new SolAR::PIPELINE::SolARPluginPipelineManager::Pose();
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_R_get(void * jarg1) { void * jresult ;
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; float (*result)[3] = 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  result = (float (*)[3])(float (*)[3]) ((arg1)->R); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_reset(void * jarg1) {
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  (arg1)->reset(); }
+SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_translation(void * jarg1, int jarg2) { float jresult ;
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; int arg2 ; float result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  arg2 = (int)jarg2;  result = (float)(arg1)->translation(arg2);
+  jresult = result;  return jresult; }
+SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_PipelineManager_Pose_rotation(void * jarg1, int jarg2, int jarg3) { float jresult ;
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ; int arg2 ; int arg3 ;
+  float result; arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  arg2 = (int)jarg2;  arg3 = (int)jarg3; 
+  result = (float)(arg1)->rotation(arg2,arg3); jresult = result;  return jresult; }
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_PipelineManager_Pose() { void * jresult ;
+  SolAR::PIPELINE::PipelineManager::Pose *result = 0 ;
+  result = (SolAR::PIPELINE::PipelineManager::Pose *)new SolAR::PIPELINE::PipelineManager::Pose(); jresult = (void *)result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_PipelineManager_Pose(void * jarg1) {
+  SolAR::PIPELINE::PipelineManager::Pose *arg1 = (SolAR::PIPELINE::PipelineManager::Pose *) 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg1;  delete arg1; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_width_set(void * jarg1, int jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2;  if (arg1) (arg1)->width = arg2; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_width_get(void * jarg1) { int jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->width); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_height_set(void * jarg1, int jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2;  if (arg1) (arg1)->height = arg2; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_height_get(void * jarg1) { int jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->height); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_focalX_set(void * jarg1, float jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; float arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (float)jarg2;  if (arg1) (arg1)->focalX = arg2; }
+SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_focalX_get(void * jarg1) { float jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; float result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (float) ((arg1)->focalX); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_focalY_set(void * jarg1, float jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; float arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (float)jarg2;  if (arg1) (arg1)->focalY = arg2; }
+SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_focalY_get(void * jarg1) { float jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; float result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (float) ((arg1)->focalY); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_centerX_set(void * jarg1, int jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2;  if (arg1) (arg1)->centerX = arg2; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_centerX_get(void * jarg1) { int jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->centerX); jresult = result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_centerY_set(void * jarg1, int jarg2) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int arg2 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2;  if (arg1) (arg1)->centerY = arg2; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_CamParams_centerY_get(void * jarg1) { int jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ; int result;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->centerY); jresult = result; 
+  return jresult; }
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_PipelineManager_CamParams() { void * jresult ;
+  SolAR::PIPELINE::PipelineManager::CamParams *result = 0 ;
+  result = (SolAR::PIPELINE::PipelineManager::CamParams *)new SolAR::PIPELINE::PipelineManager::CamParams();
   jresult = (void *)result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_SolARPluginPipelineManager_Pose(void * jarg1) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *) 0 ;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg1;  delete arg1; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_width_set(void * jarg1, int jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->width = arg2; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_width_get(void * jarg1) { int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->width);
-  jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_height_set(void * jarg1, int jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->height = arg2; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_height_get(void * jarg1) { int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->height);
-  jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_focalX_set(void * jarg1, float jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  float arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (float)jarg2; 
-  if (arg1) (arg1)->focalX = arg2; }
-SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_focalX_get(void * jarg1) { float jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  float result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (float) ((arg1)->focalX);
-  jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_focalY_set(void * jarg1, float jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  float arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (float)jarg2; 
-  if (arg1) (arg1)->focalY = arg2; }
-SWIGEXPORT float SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_focalY_get(void * jarg1) { float jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  float result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (float) ((arg1)->focalY);
-  jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_centerX_set(void * jarg1, int jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->centerX = arg2; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_centerX_get(void * jarg1) { int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->centerX);
-  jresult = result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_centerY_set(void * jarg1, int jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int arg2 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->centerY = arg2; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_CamParams_centerY_get(void * jarg1) { int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  int result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  result = (int) ((arg1)->centerY);
-  jresult = result;  return jresult; }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_SolARPluginPipelineManager_CamParams() { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *result = 0 ;
-  result = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)new SolAR::PIPELINE::SolARPluginPipelineManager::CamParams();
-  jresult = (void *)result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_SolARPluginPipelineManager_CamParams(void * jarg1) {
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *) 0 ;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager::CamParams *)jarg1;  delete arg1; }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_SolARPluginPipelineManager() { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager *result = 0 ;
-  result = (SolAR::PIPELINE::SolARPluginPipelineManager *)new SolAR::PIPELINE::SolARPluginPipelineManager();
-  jresult = (void *)result;  return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_SolARPluginPipelineManager(void * jarg1) {
-  SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  delete arg1; }
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_init(void * jarg1, char * jarg2, char * jarg3) {
-  unsigned int jresult ; SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  std::string *arg2 = 0 ; std::string *arg3 = 0 ; bool result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1; 
-  if (!jarg2) { SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_PipelineManager_CamParams(void * jarg1) {
+  SolAR::PIPELINE::PipelineManager::CamParams *arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *) 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager::CamParams *)jarg1;  delete arg1; }
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_new_PipelineManager() { void * jresult ;
+  SolAR::PIPELINE::PipelineManager *result = 0 ;
+  result = (SolAR::PIPELINE::PipelineManager *)new SolAR::PIPELINE::PipelineManager(); jresult = (void *)result; 
+  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_PipelineManager(void * jarg1) {
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  delete arg1; }
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_init(void * jarg1, char * jarg2, char * jarg3) {
+  unsigned int jresult ; SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ;
+  std::string *arg2 = 0 ; std::string *arg3 = 0 ; bool result; arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg2_str(jarg2); arg2 = &arg2_str;  if (!jarg3) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg3_str(jarg3); arg3 = &arg3_str; 
   result = (bool)(arg1)->init((std::string const &)*arg2,(std::string const &)*arg3); jresult = result;  return jresult; }
-SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_getCameraParameters(void * jarg1) { void * jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::CamParams result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1; 
+SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_PipelineManager_getCameraParameters(void * jarg1) { void * jresult ;
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ;
+  SolAR::PIPELINE::PipelineManager::CamParams result; arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1; 
   result = (arg1)->getCameraParameters();
-  jresult = new SolAR::PIPELINE::SolARPluginPipelineManager::CamParams((const SolAR::PIPELINE::SolARPluginPipelineManager::CamParams &)result); 
+  jresult = new SolAR::PIPELINE::PipelineManager::CamParams((const SolAR::PIPELINE::PipelineManager::CamParams &)result); 
   return jresult; }
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_start(void * jarg1, void * jarg2) {
-  unsigned int jresult ; SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  void *arg2 = (void *) 0 ; bool result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  arg2 = (void *)jarg2; 
-  result = (bool)(arg1)->start(arg2); jresult = result;  return jresult; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_udpate(void * jarg1, void * jarg2) { int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  SolAR::PIPELINE::SolARPluginPipelineManager::Pose *arg2 = 0 ; SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE result;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1; 
-  arg2 = (SolAR::PIPELINE::SolARPluginPipelineManager::Pose *)jarg2; if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "SolAR::PIPELINE::SolARPluginPipelineManager::Pose & type is null", 0);
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_start(void * jarg1, void * jarg2) { unsigned int jresult ;
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ; bool result;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (void *)jarg2;  result = (bool)(arg1)->start(arg2);
+  jresult = result;  return jresult; }
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_udpate(void * jarg1, void * jarg2) { int jresult ;
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ;
+  SolAR::PIPELINE::PipelineManager::Pose *arg2 = 0 ; SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE result;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (SolAR::PIPELINE::PipelineManager::Pose *)jarg2; if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "SolAR::PIPELINE::PipelineManager::Pose & type is null", 0);
     return 0; }   result = (SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE)(arg1)->udpate(*arg2); jresult = (int)result; 
   return jresult; }
-SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_loadSourceImage(void * jarg1, void * jarg2, int jarg3, int jarg4) {
-  int jresult ; SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  void *arg2 = (void *) 0 ; int arg3 ; int arg4 ; SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE result;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  arg2 = (void *)jarg2;  arg3 = (int)jarg3;  arg4 = (int)jarg4; 
+SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_PipelineManager_loadSourceImage(void * jarg1, void * jarg2, int jarg3, int jarg4) {
+  int jresult ; SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ;
+  int arg3 ; int arg4 ; SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE result; arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1; 
+  arg2 = (void *)jarg2;  arg3 = (int)jarg3;  arg4 = (int)jarg4; 
   result = (SolAR::PIPELINE::PIPELINEMANAGER_RETURNCODE)(arg1)->loadSourceImage(arg2,arg3,arg4); jresult = (int)result; 
   return jresult; }
-SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_udpatePose(void * jarg1, void * jarg2) {
-  SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  void *arg2 = (void *) 0 ; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  arg2 = (void *)jarg2; 
-  (arg1)->udpatePose(arg2); }
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_stop(void * jarg1) { unsigned int jresult ;
-  SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ; bool result;
-  arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  result = (bool)(arg1)->stop(); jresult = result; 
-  return jresult; }
+SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_PipelineManager_udpatePose(void * jarg1, void * jarg2) {
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; void *arg2 = (void *) 0 ;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  arg2 = (void *)jarg2;  (arg1)->udpatePose(arg2); }
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_PipelineManager_stop(void * jarg1) { unsigned int jresult ;
+  SolAR::PIPELINE::PipelineManager *arg1 = (SolAR::PIPELINE::PipelineManager *) 0 ; bool result;
+  arg1 = (SolAR::PIPELINE::PipelineManager *)jarg1;  result = (bool)(arg1)->stop(); jresult = result;  return jresult; }
 #ifdef __cplusplus
 }
 #endif
