@@ -1,7 +1,7 @@
 %module SolARPipelineManager
 
 %{
-#include "PipelineManager.h"
+#include "SolARPluginPipelineManager.h"
 #include "PipelineManagerAPI.h"
 %}
 

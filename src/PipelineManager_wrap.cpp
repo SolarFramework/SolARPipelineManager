@@ -299,7 +299,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_SolARPipelineManager(SWIG
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
 
-#include "PipelineManager.h"
+#include "SolARPluginPipelineManager.h"
 #include "PipelineManagerAPI.h"
 
 
