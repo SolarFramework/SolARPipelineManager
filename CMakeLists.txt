@@ -4,19 +4,20 @@ cmake_minimum_required(VERSION 3.7.2)
 set (VERSION_NUMBER "0.5.2")
 project("SolARPipelineManager")
 set (SOURCES
-	src/PipelineManager.cpp
+	src/ConsoleRedirector.cpp 
+    src/Unity/UnityPluginInterface.cpp
 	src/PipelineManager_wrap.cpp
-	src/ConsoleRedirector.cpp
-	src/Unity/UnityPluginInterface.cpp
+    src/SolARPluginPipelineManager.cpp
 )
 
 set (HEADERS
-	interfaces/PipelineManager.h
-	interfaces/PipelineManagerAPI.h
 	interfaces/ConsoleRedirector.h
-	interfaces/Unity/IUnityGraphics.h
-	interfaces/Unity/IUnityInterface.h
-	interfaces/Unity/UnityPluginInterface.h
+    interfaces/Unity/IUnityGraphics.h
+    interfaces/Unity/IUnityInterface.h
+    interfaces/Unity/UnityPluginInterface.h
+	interfaces/SolARPluginPipelineManager.h
+    interfaces/PipelineManagerAPI.h
+	
 )
 
 
