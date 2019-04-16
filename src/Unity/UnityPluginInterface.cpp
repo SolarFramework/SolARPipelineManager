@@ -1,7 +1,6 @@
 #include "Unity/IUnityInterface.h"
 #include "Unity/IUnityGraphics.h"
 
-#include <windows.h>
 #include <iostream>
 
 
