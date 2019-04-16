@@ -41,7 +41,7 @@ HEADERS += \
 #        interfaces/ConsoleRedirector.h \
         interfaces\Unity\IUnityGraphics.h \
         interfaces\Unity\IUnityInterface.h \
-        interfaces\Unity\UnityPluginInterface.h
+#        interfaces\Unity\UnityPluginInterface.h
 }
 
 HEADERS += \
@@ -52,7 +52,7 @@ HEADERS += \
 msvc {
 SOURCES += \
 #     src/ConsoleRedirector.cpp \
-    src/Unity/UnityPluginInterface.cpp
+#     src/Unity/UnityPluginInterface.cpp
 }
 
 SOURCES += \
