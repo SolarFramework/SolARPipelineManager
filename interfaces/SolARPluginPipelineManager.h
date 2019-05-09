@@ -65,8 +65,9 @@ public:
     ~SolARPluginPipelineManager();
 
     bool init( const std::string& conf_path, const std::string& pipelineUUID);
-
-    CamParams getCameraParameters();
+	
+	CamParams getCameraParameters();
+    //CameraParameters getCameraParameters();
 
     bool start(void* textureHandle);
 

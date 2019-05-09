@@ -45,7 +45,6 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
     LOG_INFO("conf_path : {}", conf_path.c_str())
 	try{
             if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
-            //if (xpcfComponentManager->load("F:/Dev/SolAR/sources/Plugins/Unity/Assets/StreamingAssets/Pipelines/PipelineFiducialMarker.xml") == org::bcom::xpcf::_SUCCESS)
 				load_ok = true;
     }
 	catch (const std::exception& exception)
@@ -68,6 +67,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 }
 
 SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParameters()
+//CameraParameters SolARPluginPipelineManager::getCameraParameters()
 {
     CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
     CamParams camParams;
@@ -79,6 +79,7 @@ SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParam
     camParams.centerY = cameraParameters.centerY;
 
     return camParams;
+	//return m_pipeline->getCameraParameters();
 }
 
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
@@ -100,6 +101,21 @@ bool SolARPluginPipelineManager::start(void* textureHandle)
 
     return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
+
+/*PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::update(Transform3Df& pose)
+{
+	if (m_pipeline == nullptr)
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
+
+    SinkReturnCode returnCode = m_pipeline->update(pose);
+    if (returnCode == SinkReturnCode::_ERROR)
+        return PIPELINEMANAGER_RETURNCODE::_ERROR;
+
+    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
+    {
+        return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
+    }
+}*/
 
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(SolARPluginPipelineManager::Pose& pose)
 {
