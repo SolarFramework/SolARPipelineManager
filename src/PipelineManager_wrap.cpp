@@ -298,18 +298,104 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_SolARPipelineManager(SWIG
 
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } else
 
+/*  Errors in SWIG */
+#define  SWIG_UnknownError    	   -1
+#define  SWIG_IOError        	   -2
+#define  SWIG_RuntimeError   	   -3
+#define  SWIG_IndexError     	   -4
+#define  SWIG_TypeError      	   -5
+#define  SWIG_DivisionByZero 	   -6
+#define  SWIG_OverflowError  	   -7
+#define  SWIG_SyntaxError    	   -8
+#define  SWIG_ValueError     	   -9
+#define  SWIG_SystemError    	   -10
+#define  SWIG_AttributeError 	   -11
+#define  SWIG_MemoryError    	   -12
+#define  SWIG_NullReferenceError   -13
+
+
+
 
 #include "SolARPluginPipelineManager.h"
 #include "PipelineManagerAPI.h"
+
+
+#include <stdint.h>		// Use the C99 official header
+
+
+SWIGINTERN void SWIG_CSharpException(int code, const char *msg) {
+  if (code == SWIG_ValueError) {
+    SWIG_CSharpExceptionArgumentCodes exception_code = SWIG_CSharpArgumentOutOfRangeException;
+    SWIG_CSharpSetPendingExceptionArgument(exception_code, msg, 0);
+  } else {
+    SWIG_CSharpExceptionCodes exception_code = SWIG_CSharpApplicationException;
+    switch(code) {
+    case SWIG_MemoryError:
+      exception_code = SWIG_CSharpOutOfMemoryException;
+      break;
+    case SWIG_IndexError:
+      exception_code = SWIG_CSharpIndexOutOfRangeException;
+      break;
+    case SWIG_DivisionByZero:
+      exception_code = SWIG_CSharpDivideByZeroException;
+      break;
+    case SWIG_IOError:
+      exception_code = SWIG_CSharpIOException;
+      break;
+    case SWIG_OverflowError:
+      exception_code = SWIG_CSharpOverflowException;
+      break;
+    case SWIG_RuntimeError:
+    case SWIG_TypeError:
+    case SWIG_SyntaxError:
+    case SWIG_SystemError:
+    case SWIG_UnknownError:
+    default:
+      exception_code = SWIG_CSharpApplicationException;
+      break;
+    }
+    SWIG_CSharpSetPendingException(exception_code, msg);
+  }
+}
 
 
 #include <typeinfo>
 #include <stdexcept>
 
 
+#include <stdio.h>
+
+
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <string>
+
+
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+
+
+#include <map>
+#include <algorithm>
+#include <stdexcept>
+
+
+#include <utility>
+
+
+#include <algorithm>
+#include <array>
+#include <stdexcept>
+
+
+#include <deque>
+#include <stdexcept>
+
+
+#include <string>
 
 
 #include <string>
@@ -442,7 +528,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_Add(void * jarg1, char * j
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::string *arg2 = 0 ;
   arg1 = (std::vector< std::string > *)jarg1;  if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return ; } 
-  std::string arg2_str(jarg2); arg2 = &arg2_str;  (arg1)->push_back((std::string const &)*arg2); }
+  std::string arg2_str(jarg2); arg2 = &arg2_str;  (arg1)->push_back((std::string const &)*arg2);  }
 SWIGEXPORT unsigned long SWIGSTDCALL CSharp_SolAR_StringVector_size(void * jarg1) { unsigned long jresult ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::vector< std::string >::size_type result;
   arg1 = (std::vector< std::string > *)jarg1;  result = ((std::vector< std::string > const *)arg1)->size();
@@ -488,7 +574,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_setitem(void * jarg1, int 
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return ; } 
   std::string arg3_str(jarg3); arg3 = &arg3_str;  try {
     std_vector_Sl_std_string_Sg__setitem(arg1,arg2,(std::string const &)*arg3);}  catch(std::out_of_range &_e) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what()); return ; }  }
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what()); return ; }   }
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_AddRange(void * jarg1, void * jarg2) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::vector< std::string > *arg2 = 0 ;
   arg1 = (std::vector< std::string > *)jarg1;  arg2 = (std::vector< std::string > *)jarg2; if (!arg2) {
@@ -508,7 +594,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_Insert(void * jarg1, int j
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return ; } 
   std::string arg3_str(jarg3); arg3 = &arg3_str;  try {
     std_vector_Sl_std_string_Sg__Insert(arg1,arg2,(std::string const &)*arg3);}  catch(std::out_of_range &_e) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what()); return ; }  }
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what()); return ; }   }
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; int arg2 ; std::vector< std::string > *arg3 = 0 ;
   arg1 = (std::vector< std::string > *)jarg1;  arg2 = (int)jarg2;  arg3 = (std::vector< std::string > *)jarg3; if (!arg3) {
@@ -534,7 +620,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_StringVector_Repeat(char * jarg1, int
     result = (std::vector< std::string > *)std_vector_Sl_std_string_Sg__Repeat((std::string const &)*arg1,arg2);}
    catch(std::out_of_range &_e) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what()); return 0; } 
-  jresult = (void *)result;  return jresult; }
+  jresult = (void *)result;   return jresult; }
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_StringVector_Reverse__SWIG_0(void * jarg1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; arg1 = (std::vector< std::string > *)jarg1; 
   std_vector_Sl_std_string_Sg__Reverse__SWIG_0(arg1); }
@@ -557,25 +643,25 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_StringVector_Contains(void * ja
   arg1 = (std::vector< std::string > *)jarg1;  if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg2_str(jarg2); arg2 = &arg2_str; 
-  result = (bool)std_vector_Sl_std_string_Sg__Contains(arg1,(std::string const &)*arg2); jresult = result;  return jresult; }
+  result = (bool)std_vector_Sl_std_string_Sg__Contains(arg1,(std::string const &)*arg2); jresult = result;   return jresult; }
 SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_StringVector_IndexOf(void * jarg1, char * jarg2) { int jresult ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::string *arg2 = 0 ; int result;
   arg1 = (std::vector< std::string > *)jarg1;  if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg2_str(jarg2); arg2 = &arg2_str; 
-  result = (int)std_vector_Sl_std_string_Sg__IndexOf(arg1,(std::string const &)*arg2); jresult = result;  return jresult; }
+  result = (int)std_vector_Sl_std_string_Sg__IndexOf(arg1,(std::string const &)*arg2); jresult = result;   return jresult; }
 SWIGEXPORT int SWIGSTDCALL CSharp_SolAR_StringVector_LastIndexOf(void * jarg1, char * jarg2) { int jresult ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::string *arg2 = 0 ; int result;
   arg1 = (std::vector< std::string > *)jarg1;  if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg2_str(jarg2); arg2 = &arg2_str; 
-  result = (int)std_vector_Sl_std_string_Sg__LastIndexOf(arg1,(std::string const &)*arg2); jresult = result;  return jresult; }
+  result = (int)std_vector_Sl_std_string_Sg__LastIndexOf(arg1,(std::string const &)*arg2); jresult = result;   return jresult; }
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_StringVector_Remove(void * jarg1, char * jarg2) { unsigned int jresult ;
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; std::string *arg2 = 0 ; bool result;
   arg1 = (std::vector< std::string > *)jarg1;  if (!jarg2) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg2_str(jarg2); arg2 = &arg2_str; 
-  result = (bool)std_vector_Sl_std_string_Sg__Remove(arg1,(std::string const &)*arg2); jresult = result;  return jresult; }
+  result = (bool)std_vector_Sl_std_string_Sg__Remove(arg1,(std::string const &)*arg2); jresult = result;   return jresult; }
 SWIGEXPORT void SWIGSTDCALL CSharp_SolAR_delete_StringVector(void * jarg1) {
   std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ; arg1 = (std::vector< std::string > *)jarg1; 
   delete arg1; }
@@ -684,7 +770,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_init
   std::string arg2_str(jarg2); arg2 = &arg2_str;  if (!jarg3) {
     SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0); return 0; } 
   std::string arg3_str(jarg3); arg3 = &arg3_str; 
-  result = (bool)(arg1)->init((std::string const &)*arg2,(std::string const &)*arg3); jresult = result;  return jresult; }
+  result = (bool)(arg1)->init((std::string const &)*arg2,(std::string const &)*arg3); jresult = result;    return jresult; }
 SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_getCameraParameters(void * jarg1) { void * jresult ;
   SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
   SolAR::PIPELINE::SolARPluginPipelineManager::CamParams result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1; 
