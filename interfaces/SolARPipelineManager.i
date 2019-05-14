@@ -6,6 +6,13 @@
 %}
 %include "Swig.i"
 
+%import (module="SolAR.Datastructure") "SolAR_Datastructure.i"
+
+%typemap(csimports) SWIGTYPE
+%{
+    using SolAR.Datastructure;
+%}
+
 %template(StringVector) std::vector<std::string>;
 
 //Use IntPtr for void* type

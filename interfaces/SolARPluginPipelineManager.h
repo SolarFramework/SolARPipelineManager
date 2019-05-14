@@ -19,9 +19,11 @@
 
 #include "PipelineManagerAPI.h"
 #include "api/pipeline/IPipeline.h"
+#include "datastructure/MathDefinitions.h"
 #include <string>
 
 namespace SolAR {
+using namespace datastructure;
 namespace PIPELINE {
 
 enum PIPELINEMANAGER_RETURNCODE {
@@ -37,41 +39,16 @@ enum PIPELINEMANAGER_RETURNCODE {
 class PIPELINEMANAGER_INTERFACE_EXPORT SolARPluginPipelineManager
 {
 public:
-
-
-    struct Pose
-	{
-        float T[3] = {0.0f, 0.0f, 0.0f};
-        float R[3][3] = {{1.0f, 0.0f, 0.0f},{0.0f, 1.0f, 0.0f},{0.0f, 0.0f, 1.0f}};
-
-		void reset();
-		//This is needed for the SWIG C# interface
-		float translation( int i ) { return T[i]; }
-		float rotation( int i, int j ) { return R[i][j]; }
-	};
-
-    struct CamParams
-    {
-        int width = 0;
-        int height = 0;
-        float focalX = 0.0f;
-        float focalY = 0.0f;
-		int centerX = 320;
-		int centerY = 240;
-    };
-
-public:
     SolARPluginPipelineManager();
     ~SolARPluginPipelineManager();
 
     bool init( const std::string& conf_path, const std::string& pipelineUUID);
 	
-	CamParams getCameraParameters();
-    //CameraParameters getCameraParameters();
-
+    CamCalibration getCameraParameters();
+	
     bool start(void* textureHandle);
 
-    PIPELINEMANAGER_RETURNCODE udpate(Pose& pose);
+    PIPELINEMANAGER_RETURNCODE udpate(Transform3Df& pose);
 
     PIPELINEMANAGER_RETURNCODE loadSourceImage(void* sourceTextureHandle, int width, int height);
 

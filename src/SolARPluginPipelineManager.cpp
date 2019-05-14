@@ -13,7 +13,7 @@ using namespace api::source;
 namespace PIPELINE {
 
 
-void SolARPluginPipelineManager::Pose::reset()
+/*void SolARPluginPipelineManager::Pose::reset()
 {
 	for( int i = 0; i < 3; ++i )
 	{
@@ -24,7 +24,7 @@ void SolARPluginPipelineManager::Pose::reset()
 		T[i] = 0.f;
 		R[i][i] = 1.f;//Set diagonal to 1;
 	}
-}
+}*/
 
 SolARPluginPipelineManager::SolARPluginPipelineManager() : m_pipeline( nullptr )
 {
@@ -66,10 +66,10 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 
 }
 
-SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParameters()
-//CameraParameters SolARPluginPipelineManager::getCameraParameters()
+//SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParameters()
+CamCalibration SolARPluginPipelineManager::getCameraParameters()
 {
-    CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
+    /*CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
     CamParams camParams;
     camParams.width = cameraParameters.width;
     camParams.height = cameraParameters.height;
@@ -78,8 +78,8 @@ SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParam
     camParams.centerX = cameraParameters.centerX;
     camParams.centerY = cameraParameters.centerY;
 
-    return camParams;
-	//return m_pipeline->getCameraParameters();
+    return camParams;*/
+	return m_pipeline->getCameraParameters();
 }
 
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
@@ -102,7 +102,7 @@ bool SolARPluginPipelineManager::start(void* textureHandle)
     return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
 
-/*PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::update(Transform3Df& pose)
+PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose)
 {
 	if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
@@ -115,9 +115,12 @@ bool SolARPluginPipelineManager::start(void* textureHandle)
     {
         return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
     }
-}*/
+	
+    return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 
-PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(SolARPluginPipelineManager::Pose& pose)
+}
+
+/*PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose)
 {
     if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
@@ -150,7 +153,7 @@ PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(SolARPluginPipelin
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 
-}
+}*/
 
 void SolARPluginPipelineManager::udpatePose(void* pose)
 {
