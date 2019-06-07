@@ -36,7 +36,7 @@ enum PIPELINEMANAGER_RETURNCODE {
     _NEW_POSE_AND_IMAGE = 0x03,
 };
 
-class PIPELINEMANAGER_INTERFACE_EXPORT SolARPluginPipelineManager
+class PIPELINEMANAGER_INTERFACE_EXPORT PipelineManager
 {
 public:
     SolARPluginPipelineManager();

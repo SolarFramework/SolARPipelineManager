@@ -29,4 +29,4 @@
 %ignore IPipeline;
 
 %include "PipelineManagerAPI.h"
-%include "SolARPluginPipelineManager.h"
+%include "PipelineManager.h"

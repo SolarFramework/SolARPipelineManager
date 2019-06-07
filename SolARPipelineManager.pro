@@ -38,13 +38,22 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 INCLUDEPATH += interfaces/
 
 HEADERS += \
-    interfaces/SolARPluginPipelineManager.h \
+    interfaces/PipelineManager.h \
     interfaces/PipelineManagerAPI.h
 
 
+<<<<<<< HEAD
+=======
+msvc {
+SOURCES += \
+#     src/ConsoleRedirector.cpp \
+      src/Unity/UnityPluginInterface.cpp
+}
+
+>>>>>>> develop
 SOURCES += \
     src/PipelineManager_wrap.cpp \
-    src/SolARPluginPipelineManager.cpp
+    src/PipelineManager.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
