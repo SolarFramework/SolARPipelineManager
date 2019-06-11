@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.7.2)
 set (VERSION_NUMBER "0.5.2")
 project("SolARPipelineManager")
 set (SOURCES
+	src/SolARPluginPipelineManager_wrap.cpp
 	src/SolARPluginPipelineManager.cpp
-	src/PipelineManager_wrap.cpp
 )
 
 set (HEADERS
