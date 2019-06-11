@@ -1,4 +1,4 @@
-#include "PipelineManager.h"
+#include "SolARPluginPipelineManager.h"
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
 #include "core/Log.h"
@@ -12,17 +12,17 @@ using namespace api::sink;
 using namespace api::source;
 namespace PIPELINE {
 
-PipelineManager::PipelineManager() : m_pipeline( nullptr )
+SolARPluginPipelineManager::SolARPluginPipelineManager() : m_pipeline( nullptr )
 {
 	LOG_INFO("Pipeline Manager Constructor");
 }
 
-PipelineManager::~PipelineManager()
+SolARPluginPipelineManager::~SolARPluginPipelineManager()
 {
 	xpcf::getComponentManagerInstance()->clear();
 }
 
-bool PipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
 {
     LOG_INFO("Start PipelineManager::init")
     LOG_FLUSH
@@ -52,27 +52,12 @@ bool PipelineManager::init( const std::string& conf_path, const std::string& pip
 
 }
 
-<<<<<<< HEAD:src/SolARPluginPipelineManager.cpp
-//SolARPluginPipelineManager::CamParams SolARPluginPipelineManager::getCameraParameters()
 CamCalibration SolARPluginPipelineManager::getCameraParameters()
-=======
-PipelineManager::CamParams PipelineManager::getCameraParameters()
->>>>>>> develop:src/PipelineManager.cpp
 {
-    /*CameraParameters cameraParameters =  m_pipeline->getCameraParameters();
-    CamParams camParams;
-    camParams.width = cameraParameters.width;
-    camParams.height = cameraParameters.height;
-    camParams.focalX = cameraParameters.focalX;
-    camParams.focalY = cameraParameters.focalY;
-    camParams.centerX = cameraParameters.centerX;
-    camParams.centerY = cameraParameters.centerY;
-
-    return camParams;*/
 	return m_pipeline->getCameraParameters();
 }
 
-PIPELINEMANAGER_RETURNCODE PipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
+PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
 {
     if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
@@ -84,7 +69,7 @@ PIPELINEMANAGER_RETURNCODE PipelineManager::loadSourceImage(void* sourceTextureH
     return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 }
 
-bool PipelineManager::start(void* textureHandle)
+bool SolARPluginPipelineManager::start(void* textureHandle)
 {
     if( m_pipeline == nullptr )
          return false;
@@ -92,7 +77,6 @@ bool PipelineManager::start(void* textureHandle)
     return (m_pipeline->start(textureHandle) == FrameworkReturnCode::_SUCCESS);	
 }
 
-<<<<<<< HEAD:src/SolARPluginPipelineManager.cpp
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose)
 {
 	if (m_pipeline == nullptr)
@@ -111,45 +95,7 @@ PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose
 
 }
 
-/*PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose)
-=======
-PIPELINEMANAGER_RETURNCODE PipelineManager::udpate(PipelineManager::Pose& pose)
->>>>>>> develop:src/PipelineManager.cpp
-{
-    if (m_pipeline == nullptr)
-        return PIPELINEMANAGER_RETURNCODE::_ERROR;
-
-    Transform3Df solarPose;
-    SinkReturnCode returnCode = m_pipeline->update(solarPose);
-    if (returnCode == SinkReturnCode::_ERROR)
-        return PIPELINEMANAGER_RETURNCODE::_ERROR;
-
-    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
-    {
-        pose.T[0] = solarPose.translation()(0);
-        pose.T[1] = solarPose.translation()(1);
-        pose.T[2] = solarPose.translation()(2);
-
-        pose.R[0][0] = solarPose.rotation()(0,0);
-        pose.R[0][1] = solarPose.rotation()(0,1);
-        pose.R[0][2] = solarPose.rotation()(0,2);
-        pose.R[1][0] = solarPose.rotation()(1,0);
-        pose.R[1][1] = solarPose.rotation()(1,1);
-        pose.R[1][2] = solarPose.rotation()(1,2);
-        pose.R[2][0] = solarPose.rotation()(2,0);
-        pose.R[2][1] = solarPose.rotation()(2,1);
-        pose.R[2][2] = solarPose.rotation()(2,2);
-        return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
-    }
-
-//    std::cout <<" no new pose \n";
-    // return false if the pose has not been updated
-    // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
-    return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
-
-}*/
-
-void PipelineManager::udpatePose(void* pose)
+void SolARPluginPipelineManager::udpatePose(void* pose)
 {
      if (m_pipeline == nullptr)
         return ;
@@ -176,7 +122,7 @@ void PipelineManager::udpatePose(void* pose)
     return ;
 }
 
-bool PipelineManager::stop()
+bool SolARPluginPipelineManager::stop()
 {
     if (m_pipeline != nullptr)
     {

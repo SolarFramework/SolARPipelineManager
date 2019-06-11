@@ -1,5 +1,5 @@
 // Fix warnings
-//%include "std_except.i" // Typemaps used by the STL wrappers that throw exceptions
+%include "std_except.i" // Typemaps used by the STL wrappers that throw exceptions
 //%include "director.swg" // support for director classes
 
 // Common
@@ -39,7 +39,7 @@
 // BOOST
 %include "boost_intrusive_ptr.i" // SWIG_INTRUSIVE_PTR_TYPEMAPS SWIG_INTRUSIVE_PTR_TYPEMAPS_NO_WRAP  
 %include "boost_shared_ptr.i" // SWIG_SHARED_PTR_TYPEMAPS 
-// Custom 
-%include "std_string_ref.i" //Typemaps for std::string& and const std::string&
 
 
+// To use non-const std::string references
+%apply const std::string & {std::string &};

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef SOLARPIPELINEMANAGER_H
-#define SOLARPIPELINEMANAGER_H
+#ifndef SolARPluginPipelineManager_H
+#define SolARPluginPipelineManager_H
 
 #include "PipelineManagerAPI.h"
 #include "api/pipeline/IPipeline.h"
@@ -36,7 +36,7 @@ enum PIPELINEMANAGER_RETURNCODE {
     _NEW_POSE_AND_IMAGE = 0x03,
 };
 
-class PIPELINEMANAGER_INTERFACE_EXPORT PipelineManager
+class PIPELINEMANAGER_INTERFACE_EXPORT SolARPluginPipelineManager
 {
 public:
     SolARPluginPipelineManager();
