@@ -52,7 +52,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 
 }
 
-CamCalibration SolARPluginPipelineManager::getCameraParameters()
+CameraParameters SolARPluginPipelineManager::getCameraParameters()
 {
 	return m_pipeline->getCameraParameters();
 }
