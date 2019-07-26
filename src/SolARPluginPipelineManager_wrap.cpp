@@ -679,10 +679,8 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_init
   result = (bool)(arg1)->init((std::string const &)*arg2,(std::string const &)*arg3); jresult = result;  return jresult; }
 SWIGEXPORT void * SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_getCameraParameters(void * jarg1) { void * jresult ;
   SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
-  SolAR::datastructure::CamCalibration result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1; 
-  result = (arg1)->getCameraParameters();
-  jresult = new boost::shared_ptr<  Eigen::Matrix<float,3,3,Eigen::RowMajor> >(new SolAR::datastructure::CamCalibration((SolAR::datastructure::CamCalibration &)result)); 
-  return jresult; }
+  CameraParameters result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  result = (arg1)->getCameraParameters();
+  jresult = new CameraParameters((const CameraParameters &)result);  return jresult; }
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_SolAR_SolARPluginPipelineManager_start(void * jarg1, void * jarg2) {
   unsigned int jresult ; SolAR::PIPELINE::SolARPluginPipelineManager *arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *) 0 ;
   void *arg2 = (void *) 0 ; bool result; arg1 = (SolAR::PIPELINE::SolARPluginPipelineManager *)jarg1;  arg2 = (void *)jarg2; 
