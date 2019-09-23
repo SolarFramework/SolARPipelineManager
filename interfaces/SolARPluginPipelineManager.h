@@ -20,6 +20,7 @@
 #include "PipelineManagerAPI.h"
 #include "api/pipeline/IPipeline.h"
 #include "datastructure/MathDefinitions.h"
+#include "datastructure/CameraDefinitions.h"
 #include <string>
 
 namespace SolAR {
@@ -44,7 +45,7 @@ public:
 
     bool init( const std::string& conf_path, const std::string& pipelineUUID);
 	
-    CameraParameters getCameraParameters();
+    SolAR::datastructure::CameraParameters getCameraParameters();
 	
     bool start(void* textureHandle);
 

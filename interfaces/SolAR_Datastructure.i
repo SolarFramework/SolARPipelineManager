@@ -1,6 +1,7 @@
 %module solar_datastructure
 %{
 //#include "datastructure/BufferInternal.hpp" //TODO: Does not include its own dependencies
+#include "datastructure/CameraDefinitions.h"
 #include "datastructure/CloudPoint.h"
 #include "datastructure/DescriptorBuffer.h"
 #include "datastructure/DescriptorMatch.h"
@@ -23,7 +24,7 @@ using namespace SolAR::datastructure;
 
 %typemap(csimports) SWIGTYPE
 %{
-    using XPCF.Core;
+    //using XPCF.Core;
     using SolAR.Core;
 %}
 
@@ -86,54 +87,58 @@ using namespace SolAR::datastructure;
 
 ///
 
+
 %include "Eigen.i"
 %include "datastructure/MathDefinitions.h"
 %include "MathDefinitions.i"
 
-//%include "datastructure/MathDefinitions.i"
+%include "datastructure/CameraDefinitions.h"
+
+
+//#include "datastructure/MathDefinitions.i"
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Point.D.::operator.*$";
 %include "datastructure/GeometryDefinitions.h"
 
 %ignore SolAR::datastructure::BufferInternal::data() const;
 %include "datastructure/BufferInternal.hpp"
 
-//%include "datastructure/GeometryDefinitions.i"
+//#include "datastructure/GeometryDefinitions.i"
 %ignore SolAR::datastructure::CloudPoint::getVisibility() const;
 %include "datastructure/CloudPoint.h"
 
-//%include "BufferInternal.i"
+//#include "BufferInternal.i"
 %ignore SolAR::datastructure::DescriptorBuffer::data() const;
 %include "datastructure/DescriptorBuffer.h"
 
 %include "datastructure/DescriptorMatch.h"
 
-//%include "GeometryDefinitions.i"
+//#include "GeometryDefinitions.i"
 %ignore SolAR::datastructure::Image::data() const;
 %ignore SolAR::datastructure::Image::extractRegion(Rectanglei region);
 %ignore SolAR::datastructure::Image::extractRegion(Rectanglei region, uint32_t channel);
 %include "datastructure/Image.h"
 
-//%include "datastructure/GeometryDefinitions.i"
+//#include "datastructure/GeometryDefinitions.i"
 %include "datastructure/Keypoint.h"
 
-//%include "datastructure/GeometryDefinitions.i"
-//%include "datastructure/CloudPoint.i"
+//#include "datastructure/GeometryDefinitions.i"
+//#include "datastructure/CloudPoint.i"
 %include "datastructure/Map.h"
 
-//%include "datastructure/MathDefinitions.i"
+//#include "datastructure/MathDefinitions.i"
 namespace SolAR {namespace datastructure {class SquaredBinaryPatternMatrix{};}} //TODO: This a matrix with runtime dimensions
 %include "datastructure/SquaredBinaryPattern.h"
 
-//%include "datastructure/GeometryDefinitions.i"
-//%include "datastructure/Image.i"
-//%include "datastructure/Keypoint.i"
-//%include "datastructure/DescriptorBuffer.i"
-//%include "datastructure/DescriptorMatch.i"
-//%include "datastructure/CloudPoint.i"
+//#include "datastructure/GeometryDefinitions.i"
+//#include "datastructure/Image.i"
+//#include "datastructure/Keypoint.i"
+//#include "datastructure/DescriptorBuffer.i"
+//#include "datastructure/DescriptorMatch.i"
+//#include "datastructure/CloudPoint.i"
 %include "datastructure/Frame.h"
 
-//%include "datastructure/GeometryDefinitions.i"
-//%include "Frame.i"
+//#include "datastructure/GeometryDefinitions.i"
+//#include "Frame.i"
 %include "datastructure/Keyframe.h"
 
 ///

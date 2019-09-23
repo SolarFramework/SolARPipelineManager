@@ -6,6 +6,7 @@
 EIGEN(Matrix2x2f, Matrix<float, 2, 2, Eigen::RowMajor>)
 EIGEN(Matrix3x3f, Matrix<float, 3, 3, Eigen::RowMajor>)
 
+
 %define DATASTRUCT(NAME, TYPE...)
 %template(NAME##_) SolAR::datastructure::TYPE;
 %enddef
