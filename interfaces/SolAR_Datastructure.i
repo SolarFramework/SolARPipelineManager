@@ -7,6 +7,7 @@
 #include "datastructure/DescriptorMatch.h"
 #include "datastructure/Frame.h"
 #include "datastructure/GeometryDefinitions.h"
+#include "datastructure/CameraDefinitions.h"
 #include "datastructure/Image.h"
 #include "datastructure/Keyframe.h"
 #include "datastructure/Keypoint.h"
