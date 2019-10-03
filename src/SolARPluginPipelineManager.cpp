@@ -52,7 +52,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 
 }
 
-CameraParameters SolARPluginPipelineManager::getCameraParameters()
+SolAR::datastructure::CameraParameters SolARPluginPipelineManager::getCameraParameters()
 {
 	return m_pipeline->getCameraParameters();
 }
