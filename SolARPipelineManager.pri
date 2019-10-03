@@ -39,7 +39,13 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 
 INCLUDEPATH += interfaces/
 
-include (SolARPipelineManager.pri)
+HEADERS += \
+    interfaces/PipelineManagerAPI.h \
+    interfaces/SolARPluginPipelineManager.h
+
+SOURCES += \
+	src/SolARPluginPipelineManager_wrap.cpp \
+    src/SolARPluginPipelineManager.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
@@ -69,9 +75,6 @@ xpcf_xml_files.files=$$files($${PWD}/xpcf*.xml)
 
 INSTALLS += header_files
 INSTALLS += xpcf_xml_files
-
-OTHER_FILES += \
-    packagedependencies.txt
 
 #NOTE : Must be placed at the end of the .pro
 include ($(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri)
