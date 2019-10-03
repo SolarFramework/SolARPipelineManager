@@ -7,7 +7,6 @@
 #include "datastructure/DescriptorMatch.h"
 #include "datastructure/Frame.h"
 #include "datastructure/GeometryDefinitions.h"
-#include "datastructure/CameraDefinitions.h"
 #include "datastructure/Image.h"
 #include "datastructure/Keyframe.h"
 #include "datastructure/Keypoint.h"
@@ -35,22 +34,22 @@ using namespace SolAR::datastructure;
 %apply void *VOID_INT_PTR { void * }
 %apply void *VOID_INT_PTR { unsigned char * }
 
-%shared_ptr(SolAR::datastructure::CloudPoint)
-%shared_ptr(SolAR::datastructure::Contour2Df)
 %shared_ptr(SolAR::datastructure::DescriptorBuffer)
 %shared_ptr(SolAR::datastructure::Frame)
 %shared_ptr(SolAR::datastructure::Image)
 %shared_ptr(SolAR::datastructure::Keyframe)
-%shared_ptr(SolAR::datastructure::Keypoint)
 %shared_ptr(SolAR::datastructure::Map)
-%shared_ptr(SolAR::datastructure::Point2Df)
-%shared_ptr(SolAR::datastructure::Point3Df)
+%shared_ptr(SolAR::datastructure::SquaredBinaryPattern)
 %shared_ptr(SolAR::datastructure::Point2Di)
 %shared_ptr(SolAR::datastructure::Point3Di)
-%shared_ptr(SolAR::datastructure::SquaredBinaryPattern)
+%shared_ptr(SolAR::datastructure::Point3Df)
+%shared_ptr(SolAR::datastructure::Point2Df)
+%shared_ptr(SolAR::datastructure::Contour2Df)
+%shared_ptr(SolAR::datastructure::CloudPoint)
+%shared_ptr(SolAR::datastructure::Keypoint)
 
-%rename(MapIntCloudPoint) std::map<unsigned int, SRef<SolAR::datastructure::CloudPoint>, std::less<unsigned int>>;
-%template(MapIntCloudPoint) std::map<unsigned int, SRef<SolAR::datastructure::CloudPoint>, std::less<unsigned int>>;
+%rename(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
+%template(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
 %rename(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
 %template(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
 
@@ -65,26 +64,23 @@ using namespace SolAR::datastructure;
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Point2Df)
 %rename(Point2DfArray) std::vector<SolAR::datastructure::Point2Df>;
 %template(Point2DfArray) std::vector<SolAR::datastructure::Point2Df>;
+//SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Point3Df)
+%rename(Point3DfArray) std::vector<SolAR::datastructure::Point3Df>;
+%template(Point3DfArray) std::vector<SolAR::datastructure::Point3Df>;
+//SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Contour2Df)
+%rename(Contour2DfArray) std::vector<std::vector<SolAR::datastructure::Point2Df>>;
+%template(Contour2DfArray) std::vector<std::vector<SolAR::datastructure::Point2Df>>;
+//SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Keypoint)
+%rename(KeypointArray) std::vector<SolAR::datastructure::Keypoint>;
+%template(KeypointArray) std::vector<SolAR::datastructure::Keypoint>;
 
 // Vector<SRef<T>>
-%rename(CloudPointList) std::vector<SRef<SolAR::datastructure::CloudPoint>>;
-%template(CloudPointList) std::vector<SRef<SolAR::datastructure::CloudPoint>>;
-%rename(Contour2DfList) std::vector<SRef<SolAR::datastructure::Contour2Df>>;
-%template(Contour2DfList) std::vector<SRef<SolAR::datastructure::Contour2Df>>;
 %rename(DescriptorBufferList) std::vector<SRef<SolAR::datastructure::DescriptorBuffer>>;
 %template(DescriptorBufferList) std::vector<SRef<SolAR::datastructure::DescriptorBuffer>>;
 %rename(ImageList) std::vector<SRef<SolAR::datastructure::Image>>;
 %template(ImageList) std::vector<SRef<SolAR::datastructure::Image>>;
 %rename(KeyframeList) std::vector<SRef<SolAR::datastructure::Keyframe>>;
 %template(KeyframeList) std::vector<SRef<SolAR::datastructure::Keyframe>>;
-%rename(KeypointList) std::vector<SRef<SolAR::datastructure::Keypoint>>;
-%template(KeypointList) std::vector<SRef<SolAR::datastructure::Keypoint>>;
-%rename(Point2DfList) std::vector<SRef<SolAR::datastructure::Point2Df>>;
-%template(Point2DfList) std::vector<SRef<SolAR::datastructure::Point2Df>>;
-%rename(Point3DfList) std::vector<SRef<SolAR::datastructure::Point3Df>>;
-%template(Point3DfList) std::vector<SRef<SolAR::datastructure::Point3Df>>;
-
-%shared_ptr(std::vector<SRef<SolAR::datastructure::CloudPoint>>);
 
 ///
 
@@ -98,6 +94,7 @@ using namespace SolAR::datastructure;
 
 //#include "datastructure/MathDefinitions.i"
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Point.D.::operator.*$";
+
 %include "datastructure/GeometryDefinitions.h"
 
 %ignore SolAR::datastructure::BufferInternal::data() const;
@@ -108,6 +105,10 @@ using namespace SolAR::datastructure;
 %include "datastructure/CloudPoint.h"
 
 //#include "BufferInternal.i"
+%rename (EgalOperator) SolAR::datastructure::DescriptorView::operator=;
+%ignore SolAR::datastructure::DescriptorBufferIterator::operator++;
+%ignore SolAR::datastructure::DescriptorBufferIterator::operator!=;
+%ignore SolAR::datastructure::DescriptorView::data() const;
 %ignore SolAR::datastructure::DescriptorBuffer::data() const;
 %include "datastructure/DescriptorBuffer.h"
 
@@ -170,6 +171,7 @@ EMPTY_POINTER(Keyframe)
 EMPTY_POINTER(Keypoint)
 EMPTY_POINTER(Map)
 EMPTY_POINTER(Point2Df)
+EMPTY_POINTER(Contour2Df)
 EMPTY_POINTER(Point2Di)
 EMPTY_POINTER(Point3Df)
 EMPTY_POINTER(Point3Di)
