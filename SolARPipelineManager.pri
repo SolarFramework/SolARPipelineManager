@@ -5,7 +5,7 @@ CONFIG -= qt
 ## global defintions : target lib name, version
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARPipelineManager
-INSTALLSUBDIR = SolARBuild
+
 FRAMEWORK = $$TARGET
 VERSION=0.6.0
 
@@ -24,12 +24,13 @@ CONFIG(release,debug|release) {
     DEFINES += NDEBUG=1
 }
 
-DEPENDENCIESCONFIG = sharedlib recursive install
 
+DEPENDENCIESCONFIG = shared recurse install
+
+## Configuration for Visual Studio to install binaries and dependencies. Work also for QT Creator by replacing QMAKE_INSTALL
 PROJECTCONFIG = QTVS
 
-#NOTE : CONFIG as staticlib or sharedlib, DEPENDENCIESCONFIG as staticlib or sharedlib, QMAKE_TARGET.arch and PROJECTDEPLOYDIR MUST BE DEFINED BEFORE templatelibconfig.pri inclusion
-include ($$(REMAKEN_RULES_ROOT)/qmake/templatelibconfig.pri)
+include ($(REMAKEN_RULES_ROOT)/qmake/templatelibconfig.pri)
 
 ## DEFINES FOR MSVC/INTEL C++ compilers
 msvc {
@@ -38,7 +39,13 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 
 INCLUDEPATH += interfaces/
 
-include (SolARPipelineManager.pri)
+HEADERS += \
+    interfaces/PipelineManagerAPI.h \
+    interfaces/SolARPluginPipelineManager.h
+
+SOURCES += \
+	src/SolARPluginPipelineManager_wrap.cpp \
+    src/SolARPluginPipelineManager.cpp
 	
 unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
@@ -69,12 +76,5 @@ xpcf_xml_files.files=$$files($${PWD}/xpcf*.xml)
 INSTALLS += header_files
 INSTALLS += xpcf_xml_files
 
-OTHER_FILES += \
-    packagedependencies.txt
-
-<<<<<<< HEAD
-include ($$(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri))
-=======
 #NOTE : Must be placed at the end of the .pro
 include ($(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri)
->>>>>>> origin/feature/Build_QT_VS
