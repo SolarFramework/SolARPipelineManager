@@ -72,9 +72,4 @@ INSTALLS += xpcf_xml_files
 OTHER_FILES += \
     packagedependencies.txt
 
-<<<<<<< HEAD
 include ($$(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri))
-=======
-#NOTE : Must be placed at the end of the .pro
-include ($(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri)
->>>>>>> origin/feature/Build_QT_VS
