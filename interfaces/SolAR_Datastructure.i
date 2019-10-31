@@ -73,6 +73,17 @@ using namespace SolAR::datastructure;
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Keypoint)
 %rename(KeypointArray) std::vector<SolAR::datastructure::Keypoint>;
 %template(KeypointArray) std::vector<SolAR::datastructure::Keypoint>;
+//SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::CloudPoint)
+%rename(CloudPointVector) std::vector<SolAR::datastructure::CloudPoint>;
+%template(CloudPointVector) std::vector<SolAR::datastructure::CloudPoint>;
+//SWIG_STD_VECTOR_ENHANCED(unsigned int)
+%rename(UIntVector) std::vector<unsigned int>;
+%template(UIntVector) std::vector<unsigned int>;
+//SWIG_STD_VECTOR_ENHANCED(int)
+%rename(IntVector) std::vector<int>;
+%template(IntVector) std::vector<int>;
+
+
 
 // Vector<SRef<T>>
 %rename(DescriptorBufferList) std::vector<SRef<SolAR::datastructure::DescriptorBuffer>>;
@@ -101,7 +112,6 @@ using namespace SolAR::datastructure;
 %include "datastructure/BufferInternal.hpp"
 
 //#include "datastructure/GeometryDefinitions.i"
-%ignore SolAR::datastructure::CloudPoint::getVisibility() const;
 %include "datastructure/CloudPoint.h"
 
 //#include "BufferInternal.i"
