@@ -85,13 +85,14 @@ PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose
     SinkReturnCode returnCode = m_pipeline->update(pose);
     if (returnCode == SinkReturnCode::_ERROR)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
-
-    if ((returnCode & SinkReturnCode::_NEW_POSE) != SinkReturnCode::_NOTHING)
-    {
+    if (returnCode == SinkReturnCode::_NEW_POSE)
+        return PIPELINEMANAGER_RETURNCODE::_NEW_POSE;
+    if (returnCode == SinkReturnCode::_NEW_POSE_AND_IMAGE)
         return PIPELINEMANAGER_RETURNCODE::_NEW_POSE_AND_IMAGE;
-    }
-	
-    return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
+    if (returnCode == SinkReturnCode::_NEW_IMAGE)
+        return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
+
+    return PIPELINEMANAGER_RETURNCODE::_NOTHING;
 
 }
 

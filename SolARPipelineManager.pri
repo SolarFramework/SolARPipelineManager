@@ -5,8 +5,9 @@ CONFIG -= qt
 ## global defintions : target lib name, version
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARPipelineManager
+
 FRAMEWORK = $$TARGET
-VERSION=0.7.0
+VERSION=0.6.0
 
 DEFINES += MYVERSION=$${VERSION}
 DEFINES += TEMPLATE_LIBRARY
@@ -23,13 +24,13 @@ CONFIG(release,debug|release) {
     DEFINES += NDEBUG=1
 }
 
-DEPENDENCIESCONFIG = sharedlib recursive install
+
+DEPENDENCIESCONFIG = shared recurse install
 
 ## Configuration for Visual Studio to install binaries and dependencies. Work also for QT Creator by replacing QMAKE_INSTALL
 PROJECTCONFIG = QTVS
 
-#NOTE : CONFIG as staticlib or sharedlib, DEPENDENCIESCONFIG as staticlib or sharedlib, QMAKE_TARGET.arch and PROJECTDEPLOYDIR MUST BE DEFINED BEFORE templatelibconfig.pri inclusion
-include ($$shell_quote($$shell_path($$(REMAKEN_RULES_ROOT)/qmake/templatelibconfig.pri)))  # Shell_quote & shell_path required for visual on windows
+include ($(REMAKEN_RULES_ROOT)/qmake/templatelibconfig.pri)
 
 ## DEFINES FOR MSVC/INTEL C++ compilers
 msvc {
@@ -38,9 +39,15 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 
 INCLUDEPATH += interfaces/
 
-include (SolARPipelineManager.pri)
+HEADERS += \
+    interfaces/PipelineManagerAPI.h \
+    interfaces/SolARPluginPipelineManager.h
+
+SOURCES += \
+	src/SolARPluginPipelineManager_wrap.cpp \
+    src/SolARPluginPipelineManager.cpp
 	
-unix:!android {
+unix {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
 }
 
@@ -60,21 +67,14 @@ win32 {
     QMAKE_CXXFLAGS += -wd4250 -wd4251 -wd4244 -wd4275
 }
 
-android {
-    QMAKE_LFLAGS += -nostdlib++
-}
-
 header_files.path = $${PROJECTDEPLOYDIR}/interfaces
 header_files.files = $$files($${PWD}/interfaces/*.h*)
 
-xpcf_xml_files.path = $$(USERPROFILE)/.xpcf/SolAR
+xpcf_xml_files.path = $$(HOME)/.xpcf/SolAR
 xpcf_xml_files.files=$$files($${PWD}/xpcf*.xml)
 
 INSTALLS += header_files
 INSTALLS += xpcf_xml_files
 
-OTHER_FILES += \
-    packagedependencies.txt
-
 #NOTE : Must be placed at the end of the .pro
-include ($$shell_quote($$shell_path($$(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri)))) # Shell_quote & shell_path required for visual on windows
+include ($(REMAKEN_RULES_ROOT)/qmake/remaken_install_target.pri)
