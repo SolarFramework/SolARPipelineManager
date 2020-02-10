@@ -69,3 +69,4 @@ CSharp*
 
 SolARPipelineManager.pro.user.9582bec
 interfaces/Swig.i.bak
+src/SolARPluginPipelineManager_wrap.cpp
