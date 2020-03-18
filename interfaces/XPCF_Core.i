@@ -11,10 +11,6 @@
 
 %include "Swig.i"
 
-%typemap(csimports) SWIGTYPE
-%{
-%}
-
 ///
 
 %include "xpcf/core/helpers.h"
