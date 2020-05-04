@@ -13,7 +13,7 @@ pipeline {
     triggers { pollSCM('*/10 * * * *') }     
     stages {
 
-        stage("Get Third Parties") {
+         stage("Get Third Parties") {
              steps {
                  script {
                      BRANCH = BRANCH_NAME.replace('/','_')
@@ -23,11 +23,11 @@ pipeline {
                     installRemaken(params.RELEASE,BRANCH,apiKey)
                  }
              }
-        }  
+        }   
 
         stage("Build") {
              steps {
-                sh "BuildCSharp.sh" 
+                sh "./BuildCSharp.sh" 
                 buildModule("")                   
              }
         }
