@@ -11,7 +11,8 @@ if [ "$(ls -A $CSharpFolder)" ]; then
 fi
 
 echo "Generate SolARPipelineManager csharp interfaces with SWIG"
-swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERISON/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
+echo swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
+swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
 
 echo off
 echo ------------------ sub Bat file completed -----------------------------
