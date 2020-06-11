@@ -59,8 +59,8 @@ using namespace SolAR::datastructure;
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Transform3Df)
 //%rename(Transform3DfList) std::vector<SolAR::datastructure::Transform3Df>;
 //%template(Transform3DfList) std::vector<SolAR::datastructure::Transform3Df>;
-%rename(Transform3DfList) std::vector<Eigen::Transform<float,3,Eigen::Projective, Eigen::RowMajor>>;
-%template(Transform3DfList) std::vector<Eigen::Transform<float,3,Eigen::Projective, Eigen::RowMajor>>;
+%rename(Transform3DfList) std::vector<Eigen::Transform<float,3,Eigen::Affine, Eigen::RowMajor>>;
+%template(Transform3DfList) std::vector<Eigen::Transform<float,3,Eigen::Affine, Eigen::RowMajor>>;
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::Point2Df)
 %rename(Point2DfArray) std::vector<SolAR::datastructure::Point2Df>;
 %template(Point2DfArray) std::vector<SolAR::datastructure::Point2Df>;

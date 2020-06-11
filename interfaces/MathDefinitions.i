@@ -24,8 +24,8 @@ VECTOR(Vector2i, 2, int)
 VECTOR(Vector3i, 3, int)
 
 %define TRANSFORM(NAME, SIZE, TYPE)
-EIGEN(NAME, Transform<TYPE, SIZE, Eigen::Projective, Eigen::RowMajor>)
-DATASTRUCT(NAME, Transform<TYPE, SIZE, Eigen::Projective, Eigen::RowMajor>)
+EIGEN(NAME, Transform<TYPE, SIZE, Eigen::Affine, Eigen::RowMajor>)
+DATASTRUCT(NAME, Transform<TYPE, SIZE, Eigen::Affine, Eigen::RowMajor>)
 %enddef
 
 TRANSFORM(Transform2Df, 2, float)
