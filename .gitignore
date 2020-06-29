@@ -15,7 +15,7 @@
 *.o
 *.obj
 
-build/
+.\build
 
 # Precompiled Headers
 *.gch
@@ -42,7 +42,7 @@ build/
 *.app
 
 #others
-
+*.*pre1
 *.rej
 *.stash
 *.rc
@@ -50,16 +50,31 @@ build/
 *.exp
 *.ilk
 *.pdb
+*.autosave
 
 # Visual Studio files
 .vs*
 x64*
+*-packagedependencies.txt
+*-packagedependencies-win.txt
 
+# generated documentation
+doc/ 
 
 *.log
 *.tlog
 *.TMP
 *.tmp
+
+tests/bin
+
+build/
+
+*InstallDependencies.bat
+*debug.bat
+*release.bat
+*remakeninfo.txt
+*.pc
 
 #CMake
 CMakeSettings.json
