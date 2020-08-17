@@ -1,6 +1,6 @@
 COMPILER="linux-gcc"
 SOLAR_VERSION=0.8.0
-XPCF_VERSION=2.3.4
+XPCF_VERSION=2.4.0
 
 CSharpFolder=$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARPipelineManager/$SOLAR_VERSION/csharp
 
@@ -11,7 +11,7 @@ if [ "$(ls -A $CSharpFolder)" ]; then
 fi
 
 echo "Generate SolARPipelineManager csharp interfaces with SWIG"
-echo swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
+echo swig -csharp -namespace SolAR -c++ -fcompact -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
 swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
 
 echo off
