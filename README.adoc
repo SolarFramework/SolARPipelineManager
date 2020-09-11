@@ -1,7 +1,0 @@
-= SolARPipelineManager Repository
-
-To build the SolARPipelineManager, first install SWIG (www.swig.org) if not already done and then run the BuildCSharp.bat. This script will generate first a PipelineManager_wrap.cpp file in your src folder, and a set of csharp files in your CSharp/SolAR/PipelineManager folder.
-
-Then build your SolARPipelineManager project by using QTCreator or Visual.
-
-Finally, move your csharp files and the new binary of the PipelineManager where you want to use the csharp wrapper (e.g. in the Assets folder of your Unity project, the binary under the Unity Plugins folder)
