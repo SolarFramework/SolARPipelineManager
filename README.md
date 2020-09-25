@@ -8,11 +8,12 @@ As Unity only supports the C# language, the Pipeline Manager :exclamation: must 
 
 ## How to build
 
-* Build [SolAR Wrapper](https://github.com/SolarFramework/SwigWrapper/)
+* **First you must build** [SolAR Wrapper](https://github.com/SolarFramework/SwigWrapper/)
 
-* Run the `./BuildCSharp.bat`. This script will generate first a `./src/SolARPluginPipelineManager_wrap.cpp` file in yrou src, and a set of csharp files in your `$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARPipelineManager/x.x.x/csharp`.
+* Run the `./BuildCSharp.bat`. This script will generate a `./src/SolARPluginPipelineManager_wrap.cpp` file in your `./src`, and a set of C# files in your `$REMAKEN_PKG_ROOT/packages/SolARBuild/win-cl-14.1/SolARPipelineManager/x.x.x/csharp`.
 
-* Then open `SolARPipelineManager.pro` and build it
+* Then open `SolARPipelineManager.pro` and build it.
 
-* Finally, move your csharp files and the new binary of the PipelineManager where you want to use the csharp wrapper (e.g. in the Assets folder of your Unity project, the binary under a Plugins folder).   
+* Finally, move your C# files and the new binary of the PipelineManager (and SolARWrapper) where you want to use the pipeline manager (e.g. in the Assets folder of your Unity project, the binary under a Plugins folder).   
+
 :information_source: **This is automatically done by running `Install.bat` / `Bundle.bat` script of [SolARUnityPlugin](https://github.com/SolarFramework/SolARUnityPlugin).**
