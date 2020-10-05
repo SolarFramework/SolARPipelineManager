@@ -1,11 +1,3 @@
-*.user
-
-*-Debug
-
-*-Release
-
-*.vcxproj*
-
 # Prerequisites
 *.d
 
@@ -14,7 +6,6 @@
 *.lo
 *.o
 *.obj
-
 build/
 
 # Precompiled Headers
@@ -36,13 +27,52 @@ build/
 *.a
 *.lib
 
+# Visual Studio files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.vcxproj*
+*.user
+*.user.*
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+x64/
+.vs/
+*.bat
+*remakeninfo.txt
+Debug/
+Release/
+*-packagedependencies.*
+*-packagedependencies-win.*
+*-packagedependencies-linux.*
+*-packagedependencies-unix.*
+*-packagedependencies-android.*
+*.pc
+*-Debug
+*-Release
+
 # Executables
 *.exe
 *.out
 *.app
 
-#others
+# Generated documentation
+doc/ 
+doxygen/
 
+# Tests builds
+tests/bin
+
+# Others
+*.*pre1
 *.rej
 *.stash
 *.rc
@@ -50,23 +80,11 @@ build/
 *.exp
 *.ilk
 *.pdb
-
-# Visual Studio files
-.vs*
-x64*
-
-
+*.autosave
+*.project
+*.props
 *.log
 *.tlog
 *.TMP
 *.tmp
-
-#CMake
-CMakeSettings.json
-
-#CSharp wrapper
-CSharp*
-
-SolARPipelineManager.pro.user.9582bec
-interfaces/Swig.i.bak
-src/SolARPluginPipelineManager_wrap.cpp
+.git Merge

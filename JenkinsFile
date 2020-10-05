@@ -1,4 +1,6 @@
 SolArModulePipeline {
     moduleName="SolARPipelineManager"
     dirName="SolARBuild"
+    buildScripts="BuildCSharp"
+    android=true
 }

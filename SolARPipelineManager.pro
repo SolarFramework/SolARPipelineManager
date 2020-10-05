@@ -6,7 +6,7 @@ CONFIG -= qt
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARPipelineManager
 FRAMEWORK = $$TARGET
-VERSION=0.7.0
+VERSION=0.8.0
 
 DEFINES += MYVERSION=$${VERSION}
 DEFINES += TEMPLATE_LIBRARY
@@ -63,6 +63,7 @@ win32 {
 
 android {
     QMAKE_LFLAGS += -nostdlib++
+    ANDROID_ABIS="arm64-v8a"
 }
 
 header_files.path = $${PROJECTDEPLOYDIR}/interfaces
