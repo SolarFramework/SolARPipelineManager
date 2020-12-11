@@ -24,7 +24,6 @@
 #include <string>
 
 namespace SolAR {
-using namespace datastructure;
 namespace PIPELINE {
 
 enum PIPELINEMANAGER_RETURNCODE {
@@ -49,7 +48,7 @@ public:
 	
     bool start(void* textureHandle);
 
-    PIPELINEMANAGER_RETURNCODE udpate(Transform3Df& pose);
+    PIPELINEMANAGER_RETURNCODE udpate(datastructure::Transform3Df& pose);
 
     PIPELINEMANAGER_RETURNCODE loadSourceImage(void* sourceTextureHandle, int width, int height);
 
