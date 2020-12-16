@@ -18,7 +18,7 @@
 #define SolARPluginPipelineManager_H
 
 #include "PipelineManagerAPI.h"
-#include "api/pipeline/IPipeline.h"
+#include "api/pipeline/IPoseEstimationPipeline.h"
 #include "datastructure/MathDefinitions.h"
 #include "datastructure/CameraDefinitions.h"
 #include <string>
@@ -57,7 +57,7 @@ public:
     bool stop();
 
 private:
-    SRef<api::pipeline::IPipeline> m_pipeline;
+    SRef<api::pipeline::IPoseEstimationPipeline> m_pipeline;
 
 };
 
