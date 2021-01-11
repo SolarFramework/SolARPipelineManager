@@ -43,9 +43,9 @@ public:
     ~SolARPluginPipelineManager();
 
     bool init( const std::string& conf_path, const std::string& pipelineUUID);
-	
+
     SolAR::datastructure::CameraParameters getCameraParameters();
-	
+
     bool start(void* textureHandle);
 
     PIPELINEMANAGER_RETURNCODE udpate(datastructure::Transform3Df& pose);

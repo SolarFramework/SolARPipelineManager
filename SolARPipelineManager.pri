@@ -3,6 +3,5 @@ HEADERS += \
     interfaces/SolARPluginPipelineManager.h
 
 SOURCES += \
-	src/SolARPluginPipelineManager_wrap.cpp \
+    src/SolARPluginPipelineManager_wrap.cpp \
     src/SolARPluginPipelineManager.cpp
-	

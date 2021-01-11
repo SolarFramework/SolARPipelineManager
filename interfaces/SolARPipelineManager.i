@@ -1,9 +1,9 @@
 %module SolARPipelineManager
-
 %{
 #include "SolARPluginPipelineManager.h"
 #include "PipelineManagerAPI.h"
 %}
+
 %include "Swig.i"
 
 %import (module="SolAR.Datastructure") "SolAR_Datastructure.i"

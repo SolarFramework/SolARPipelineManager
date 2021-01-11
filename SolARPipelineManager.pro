@@ -1,12 +1,12 @@
 ## remove Qt dependencies
-QT       -= core gui
+QT     -= core gui
 CONFIG -= qt
 
 ## global defintions : target lib name, version
 INSTALLSUBDIR = SolARBuild
 TARGET = SolARPipelineManager
 FRAMEWORK = $$TARGET
-VERSION=0.8.1
+VERSION=0.9.0
 
 DEFINES += MYVERSION=$${VERSION}
 DEFINES += TEMPLATE_LIBRARY
@@ -40,7 +40,7 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 INCLUDEPATH += interfaces/
 
 include (SolARPipelineManager.pri)
-	
+
 unix:!android {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
 }
