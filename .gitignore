@@ -88,3 +88,6 @@ tests/bin
 *.TMP
 *.tmp
 .git Merge
+
+/csharp
+/src/swig
