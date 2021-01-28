@@ -1,6 +1,6 @@
 SET compiler=win-cl-14.1
-SET SOLAR_VERSION=0.8.1
-SET XPCF_VERSION=2.4.0
+SET SOLAR_VERSION=0.9.1
+SET XPCF_VERSION=2.5.0
 SET SCURRENTDIR=%cd%
 
 mkdir "%REMAKEN_PKG_ROOT%/packages/SolARBuild/%compiler%/SolARPipelineManager/%SOLAR_VERSION%/csharp"

@@ -1,6 +1,6 @@
 COMPILER="linux-gcc"
-SOLAR_VERSION=0.8.1
-XPCF_VERSION=2.4.0
+SOLAR_VERSION=0.9.1
+XPCF_VERSION=2.5.0
 
 CSharpFolder=$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARPipelineManager/$SOLAR_VERSION/csharp
 
