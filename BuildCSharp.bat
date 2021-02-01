@@ -18,6 +18,8 @@ SET OUT=src/swig
 IF NOT EXIST "%OUT%" MKDIR "%OUT%"
 DEL /s /q "%OUT%\*.*" > NUL
 
+IF EXIST "%LANG%" RMDIR "%LANG%" /S /Q
+
 SET OPTIONS=^
  -c++ ^
  -%LANG% ^

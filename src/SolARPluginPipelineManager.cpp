@@ -24,7 +24,7 @@ SolARPluginPipelineManager::~SolARPluginPipelineManager()
     xpcf::getComponentManagerInstance()->clear();
 }
 
-bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+bool SolARPluginPipelineManager::init( const std::string& conf_path)
 {
     LOG_INFO("Start PipelineManager::init")
     LOG_FLUSH
