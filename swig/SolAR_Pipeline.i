@@ -13,6 +13,8 @@
     using SolAR.Datastructure;
 %}
 
+///
+
 %template(StringVector) std::vector<std::string>;
 
 //Use IntPtr for void* type
@@ -20,13 +22,11 @@
 %typemap( csin ) void* %{ $csinput %}
 %typemap( imtype ) void* "System.IntPtr"
 
-///// BEGIN ENUM /////
-//For loading the enums used in the SolAR Extractors and Detectors
-//Ignore the XPCF macro
-#define XPCF_DECLARE_UUID(X) ;
+///
 
-//Do not generate wrappers for IPipeline
-%ignore IPipeline;
+//%ignore IPipeline;
 
 %include "PipelineManagerAPI.h"
+
+%typemap(csclassmodifiers) SolAR::PIPELINE::SolARPluginPipelineManager "public partial class"
 %include "SolARPluginPipelineManager.h"

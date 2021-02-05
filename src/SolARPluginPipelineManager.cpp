@@ -24,7 +24,7 @@ SolARPluginPipelineManager::~SolARPluginPipelineManager()
     xpcf::getComponentManagerInstance()->clear();
 }
 
-bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+bool SolARPluginPipelineManager::init( const std::string& conf_path)
 {
     LOG_INFO("Start PipelineManager::init")
     LOG_FLUSH
@@ -44,7 +44,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
     if (!load_ok)
         return false;
 
-    m_pipeline = xpcfComponentManager->createComponent<IPoseEstimationPipeline>(xpcf::toUUID(pipelineUUID))->bindTo<api::pipeline::IPoseEstimationPipeline>();
+    m_pipeline = xpcfComponentManager->resolve<IPoseEstimationPipeline>();
     LOG_INFO("Pipeline Component has been created")
 
     if (m_pipeline == nullptr)

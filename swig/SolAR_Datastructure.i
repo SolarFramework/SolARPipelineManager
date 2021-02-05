@@ -126,6 +126,7 @@ using namespace SolAR::datastructure;
 %ignore SolAR::datastructure::DescriptorViewTemplate::DescriptorViewTemplate(const DescriptorViewTemplate & desc);
 %ignore SolAR::datastructure::DescriptorViewTemplate::data() const;
 %ignore SolAR::datastructure::DescriptorBuffer::data() const;
+%ignore SolAR::datastructure::DescriptorBufferIterator::operator *();
 %include "datastructure/DescriptorBuffer.h"
 %template(DescriptorView8U) SolAR::datastructure::DescriptorViewTemplate<uint8_t>;
 %template(DescriptorView32F) SolAR::datastructure::DescriptorViewTemplate<float>;

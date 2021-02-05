@@ -30,4 +30,4 @@
 //#include <core/SolARFrameworkDefinitions.h>
 %include "core/SerializationDefinitions.h"
 #undef DECLARESERIALIZE
-#define DECLARESERIALIZE(T) //
+#define DECLARESERIALIZE(T) ;

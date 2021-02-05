@@ -42,7 +42,7 @@ public:
     SolARPluginPipelineManager();
     ~SolARPluginPipelineManager();
 
-    bool init( const std::string& conf_path, const std::string& pipelineUUID);
+    bool init( const std::string& conf_path);
 
     SolAR::datastructure::CameraParameters getCameraParameters();
 
