@@ -1,6 +1,8 @@
 COMPILER="linux-gcc"
 SOLAR_VERSION=0.9.0
 XPCF_VERSION=2.5.0
+LANG="csharp"
+OUT="src/swig"
 
 if [ -n "$1" ]
 then
@@ -26,8 +28,26 @@ if [ "$(ls -A $CSharpFolder)" ]; then
 fi
 
 echo "Generate SolARPipelineManager csharp interfaces with SWIG"
-echo swig -csharp -namespace SolAR -c++ -fcompact -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
-swig -csharp -namespace SolAR -c++ -fcompact -small -O -Iswig -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -outdir "$CSharpFolder" -o "src/SolARPluginPipelineManager_wrap.cpp" interfaces/SolARPipelineManager.i
+
+OPTIONS="-c++ -$LANG -fcompact -O -Iswig -Iswig/include -Iinterfaces -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER"
+
+for swigFile in swig/*.i ; do
+   echo "########"
+   echo "# $swigFile"
+   file_name="${swigFile##*/}"
+   file="${file_name%.*}"
+   outdir="$LANG/${file/_//}"
+   if [ ! -d "$outdir" ]; then
+      mkdir -p "$outdir"
+   fi
+   if [ ! -d "$OUT" ]; then
+      mkdir -p "$OUT"
+   fi
+   find "$outdir" -name "*.*" -type f -delete
+   echo "swig $OPTIONS -namespace ${file/_/.} -outdir $outdir -o $OUT/${file}_wrap.cxx $swigFile"
+   swig $OPTIONS -namespace ${file/_/.} -outdir $outdir -o $OUT/${file}_wrap.cxx $swigFile 
+done
+
 
 echo off
 echo ------------------ sub Bat file completed -----------------------------
