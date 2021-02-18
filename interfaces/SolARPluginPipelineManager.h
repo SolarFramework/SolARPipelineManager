@@ -18,13 +18,12 @@
 #define SolARPluginPipelineManager_H
 
 #include "PipelineManagerAPI.h"
-#include "api/pipeline/IPipeline.h"
+#include "api/pipeline/IPoseEstimationPipeline.h"
 #include "datastructure/MathDefinitions.h"
 #include "datastructure/CameraDefinitions.h"
 #include <string>
 
 namespace SolAR {
-using namespace datastructure;
 namespace PIPELINE {
 
 enum PIPELINEMANAGER_RETURNCODE {
@@ -49,7 +48,7 @@ public:
 	
     bool start(void* textureHandle);
 
-    PIPELINEMANAGER_RETURNCODE udpate(Transform3Df& pose);
+    PIPELINEMANAGER_RETURNCODE udpate(datastructure::Transform3Df& pose);
 
     PIPELINEMANAGER_RETURNCODE loadSourceImage(void* sourceTextureHandle, int width, int height);
 
@@ -58,7 +57,7 @@ public:
     bool stop();
 
 private:
-    SRef<api::pipeline::IPipeline> m_pipeline;
+    SRef<api::pipeline::IPoseEstimationPipeline> m_pipeline;
 
 };
 

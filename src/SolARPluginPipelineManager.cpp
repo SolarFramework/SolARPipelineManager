@@ -1,4 +1,6 @@
 #include "SolARPluginPipelineManager.h"
+#include "api/source/ISourceReturnCode.h"
+#include "api/sink/ISinkReturnCode.h"
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
 #include "core/Log.h"
@@ -42,7 +44,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 	if (!load_ok)
 		return false;
 
-    m_pipeline = xpcfComponentManager->createComponent<IPipeline>(xpcf::toUUID(pipelineUUID))->bindTo<api::pipeline::IPipeline>();
+    m_pipeline = xpcfComponentManager->createComponent<IPoseEstimationPipeline>(xpcf::toUUID(pipelineUUID))->bindTo<api::pipeline::IPoseEstimationPipeline>();
     LOG_INFO("Pipeline Component has been created")
 
     if (m_pipeline == nullptr)
