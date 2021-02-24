@@ -1,6 +1,7 @@
 SolArModulePipeline {
     moduleName="SolARPipelineManager"
     dirName="SolARBuild"
+    makeTarget="install install_deps"
     buildScripts="BuildCSharp"
     android=true
 }
