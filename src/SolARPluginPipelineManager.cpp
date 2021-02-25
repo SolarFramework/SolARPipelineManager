@@ -26,6 +26,12 @@ SolARPluginPipelineManager::~SolARPluginPipelineManager()
 
 bool SolARPluginPipelineManager::init( const std::string& conf_path)
 {
+#if NDEBUG
+    boost::log::core::get()->set_logging_enabled(false);
+#endif
+
+    LOG_ADD_LOG_TO_CONSOLE();
+
     LOG_INFO("Start PipelineManager::init")
     LOG_FLUSH
     SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
