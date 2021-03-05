@@ -4,6 +4,9 @@
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
 #include "core/Log.h"
+
+#include <boost/log/core.hpp>
+
 #include <iostream>
 
 
