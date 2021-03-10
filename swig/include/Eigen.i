@@ -7,7 +7,7 @@ namespace Eigen {
 	%attribute(Matrix, int, innerStride, innerStride);
 	%attribute(Matrix, int, outerStride, outerStride);
 	%attribute(Matrix, int, rowStride, rowStride);
-	/* */
+	// */
 	template <class Scalar, int Rows, int Cols, int Options = Eigen::ColMajor>
 	class Matrix
 	{
@@ -47,7 +47,7 @@ namespace Eigen {
 		int innerStride() const;
 		int outerStride() const;
 		int rowStride() const;
-		/* */
+		// */
 // EigenBase
 		int cols() const;
 		int rows() const;
@@ -72,7 +72,7 @@ namespace Eigen {
 		Transform & prescale (const Scalar &s);
 		Transform & scale (const Scalar &s);
 		//TranslationPart translation ();
-		/* */
+		// */
 	};
 	
 	%attributeref(Translation, Scalar, x);
@@ -123,6 +123,6 @@ namespace Eigen {
 		//Matrix3 toRotationMatrix () const;
 // RotationBase
 		//RotationMatrixType matrix () const;
-		/* */
+		// */
 	};
 }

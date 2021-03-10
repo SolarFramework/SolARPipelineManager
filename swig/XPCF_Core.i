@@ -1,12 +1,14 @@
 %module xpcf_core
 %{
+//#include "xpcf/core/Exception.h" // Moved to XPCF_Api
 #include "xpcf/core/helpers.h"
 #include "xpcf/core/refs.h"
 #include "xpcf/core/Result.h"
+//#include "xpcf/core/traits.h" // Moved to XPCF_Traits
 #include "xpcf/core/uuid.h"
-#include "xpcf/core/traits.h"
-#include "xpcf/xpcf_api_define.h"
 #include "xpcf/core/XPCFErrorCode.h"
+
+#include "xpcf/xpcf_api_define.h"
 %}
 
 %include "Swig.i"
@@ -18,6 +20,7 @@
 %include "xpcf/xpcf_api_define.h"
 
 %rename (UUID) boost::uuids::uuid;
+%nodefaultctor boost::uuids::uuid;
 namespace boost {namespace uuids {class uuid{};}}
 %csmethodmodifiers boost::uuids::uuid::ToString %{public override%};
 %extend boost::uuids::uuid
@@ -34,8 +37,6 @@ namespace boost {namespace uuids {class uuid{};}}
 %ignore org::bcom::xpcf::toUUID(const std::string & uuidString);
 %include "xpcf/core/uuid.h"
 
-%include "xpcf/core/traits.h"
-
 namespace boost {namespace movelib {}}
 %include "xpcf/core/refs.h"
 #define SRef boost::shared_ptr
@@ -43,5 +44,5 @@ namespace boost {namespace movelib {}}
 
 %include "xpcf/core/XPCFErrorCode.h"
 
-//#include "xpcf/core/XPCFErrorCode.i"
+//#include "xpcf/core/XPCFErrorCode.h"
 %include "xpcf/core/Result.h"

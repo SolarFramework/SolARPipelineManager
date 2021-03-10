@@ -4,6 +4,9 @@
 #include "xpcf/core/uuid.h"
 #include "xpcf/core/Exception.h"
 #include "core/Log.h"
+
+#include <boost/log/core.hpp>
+
 #include <iostream>
 
 
@@ -16,35 +19,41 @@ namespace PIPELINE {
 
 SolARPluginPipelineManager::SolARPluginPipelineManager() : m_pipeline( nullptr )
 {
-	LOG_INFO("Pipeline Manager Constructor");
+    LOG_INFO("Pipeline Manager Constructor");
 }
 
 SolARPluginPipelineManager::~SolARPluginPipelineManager()
 {
-	xpcf::getComponentManagerInstance()->clear();
+    xpcf::getComponentManagerInstance()->clear();
 }
 
-bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::string& pipelineUUID)
+bool SolARPluginPipelineManager::init( const std::string& conf_path)
 {
+#if NDEBUG
+    boost::log::core::get()->set_logging_enabled(false);
+#endif
+
+    LOG_ADD_LOG_TO_CONSOLE();
+
     LOG_INFO("Start PipelineManager::init")
     LOG_FLUSH
     SRef<xpcf::IComponentManager> xpcfComponentManager = xpcf::getComponentManagerInstance();
-	bool load_ok = false;
+    bool load_ok = false;
     LOG_INFO("conf_path : {}", conf_path.c_str())
-	try{
+    try{
             if (xpcfComponentManager->load(conf_path.c_str()) == org::bcom::xpcf::_SUCCESS)
-				load_ok = true;
+                load_ok = true;
     }
-	catch (const std::exception& exception)
-	{
-		std::cout << exception.what() << std::endl;
-		return false;
-	}
+    catch (const std::exception& exception)
+    {
+        std::cout << exception.what() << std::endl;
+        return false;
+    }
 
-	if (!load_ok)
-		return false;
+    if (!load_ok)
+        return false;
 
-    m_pipeline = xpcfComponentManager->createComponent<IPoseEstimationPipeline>(xpcf::toUUID(pipelineUUID))->bindTo<api::pipeline::IPoseEstimationPipeline>();
+    m_pipeline = xpcfComponentManager->resolve<IPoseEstimationPipeline>();
     LOG_INFO("Pipeline Component has been created")
 
     if (m_pipeline == nullptr)
@@ -56,7 +65,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path, const std::
 
 SolAR::datastructure::CameraParameters SolARPluginPipelineManager::getCameraParameters()
 {
-	return m_pipeline->getCameraParameters();
+    return m_pipeline->getCameraParameters();
 }
 
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::loadSourceImage(void* sourceTextureHandle, int width, int height)
@@ -81,7 +90,7 @@ bool SolARPluginPipelineManager::start(void* textureHandle)
 
 PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose)
 {
-	if (m_pipeline == nullptr)
+    if (m_pipeline == nullptr)
         return PIPELINEMANAGER_RETURNCODE::_ERROR;
 
     SinkReturnCode returnCode = m_pipeline->update(pose);
@@ -95,7 +104,6 @@ PIPELINEMANAGER_RETURNCODE SolARPluginPipelineManager::udpate(Transform3Df& pose
         return PIPELINEMANAGER_RETURNCODE::_NEW_IMAGE;
 
     return PIPELINEMANAGER_RETURNCODE::_NOTHING;
-
 }
 
 void SolARPluginPipelineManager::udpatePose(void* pose)
@@ -119,7 +127,7 @@ void SolARPluginPipelineManager::udpatePose(void* pose)
         return ;
     }
 
-//    std::cout <<" no new pose \n";
+    // std::cout <<" no new pose \n";
     // return false if the pose has not been updated
     // TODO : return a more explicit returnCode to make the difference beteen "Error" and "Pose not updated"
     return ;
@@ -136,4 +144,3 @@ bool SolARPluginPipelineManager::stop()
 
 }
 }
-
