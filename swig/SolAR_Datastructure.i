@@ -11,6 +11,7 @@
 #include "datastructure/GeometryDefinitions.h"
 #include "datastructure/Identification.h"
 #include "datastructure/Image.h"
+#include "datastructure/ImageMarker.h"
 #include "datastructure/Keyframe.h"
 #include "datastructure/Keypoint.h"
 #include "datastructure/MathDefinitions.h"
@@ -47,6 +48,7 @@ using namespace SolAR::datastructure;
 %shared_ptr(SolAR::datastructure::GeometryDefinitions)
 %shared_ptr(SolAR::datastructure::Identification)
 %shared_ptr(SolAR::datastructure::Image)
+%shared_ptr(SolAR::datastructure::ImageMarker)
 %shared_ptr(SolAR::datastructure::Keyframe)
 %shared_ptr(SolAR::datastructure::Keypoint)
 %shared_ptr(SolAR::datastructure::PointCloud)
@@ -200,7 +202,7 @@ namespace SolAR {namespace datastructure {class SquaredBinaryPatternMatrix{};}} 
 //#include <datastructure/SquaredBinaryPattern.h>
 //#include <datastructure/Trackable2D.h>
 %include "datastructure/FiducialMarker.h"
-
+%include "datastructure/ImageMarker.h"
 ///
 
 %inline %{
@@ -235,6 +237,7 @@ EMPTY_POINTER(Sizef)
 EMPTY_POINTER(Sizei)
 EMPTY_POINTER(Identification)
 EMPTY_POINTER(Image)
+EMPTY_POINTER(ImageMarker)
 EMPTY_POINTER(Keyframe)
 EMPTY_POINTER(Keypoint)
 EMPTY_POINTER(Transform2Df)
