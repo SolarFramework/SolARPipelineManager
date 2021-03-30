@@ -1,5 +1,5 @@
 ## remove Qt dependencies
-QT       -= core gui
+QT     -= core gui
 CONFIG -= qt
 
 ## global defintions : target lib name, version
@@ -40,7 +40,7 @@ DEFINES += "_BCOM_SHARED=__declspec(dllexport)"
 INCLUDEPATH += interfaces/
 
 include (SolARPipelineManager.pri)
-	
+
 unix:!android {
     QMAKE_CXXFLAGS += -Wignored-qualifiers
 }
@@ -62,7 +62,7 @@ win32 {
 }
 
 android {
-    QMAKE_LFLAGS += -nostdlib++
+    #QMAKE_LFLAGS += -nostdlib++
     ANDROID_ABIS="arm64-v8a"
 }
 
