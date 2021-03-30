@@ -3,7 +3,7 @@ CLS
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-SET COMPILER=android-clang
+SET COMPILER=win-cl-14.1
 SET LANG=csharp
 
 GOTO :SWIG
@@ -11,7 +11,7 @@ GOTO :SWIG
 :SWIG
 ECHO ----------------------- SWIG wrapping -----------------------
 
-SET SOLAR_VERSION=0.9.0
+SET SOLAR_VERSION=0.9.1
 SET XPCF_VERSION=2.5.0
 SET OUT=src/swig
 
