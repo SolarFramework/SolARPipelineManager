@@ -1,9 +1,11 @@
 %module solar_datastructure
 %{
 //#include "datastructure/BufferInternal.hpp" //TODO: Does not include its own dependencies
+//#include "datastructure/Lockable.h"
 #include "datastructure/CameraDefinitions.h"
 #include "datastructure/CloudPoint.h"
 #include "datastructure/CoordinateSystem.h"
+#include "datastructure/CovisibilityGraph.h"
 #include "datastructure/DescriptorBuffer.h"
 #include "datastructure/DescriptorMatch.h"
 #include "datastructure/FiducialMarker.h"
@@ -13,7 +15,11 @@
 #include "datastructure/Image.h"
 #include "datastructure/ImageMarker.h"
 #include "datastructure/Keyframe.h"
+#include "datastructure/KeyframeCollection.h"
+#include "datastructure/KeyframeRetrieval.h"
 #include "datastructure/Keypoint.h"
+#include "datastructure/Lockable.h"
+#include "datastructure/Map.h"
 #include "datastructure/MathDefinitions.h"
 #include "datastructure/PointCloud.h"
 #include "datastructure/PrimitiveInformation.h"
@@ -41,6 +47,7 @@ using namespace SolAR::datastructure;
 %shared_ptr(SolAR::datastructure::CameraDefinition)
 %shared_ptr(SolAR::datastructure::CloudPoint)
 %shared_ptr(SolAR::datastructure::CoordinateSystem)
+%shared_ptr(SolAR::datastructure::CovisibilityGraph)
 %shared_ptr(SolAR::datastructure::DescriptorBuffer)
 %shared_ptr(SolAR::datastructure::DescriptorMatch)
 %shared_ptr(SolAR::datastructure::FiducialMarker)
@@ -50,7 +57,11 @@ using namespace SolAR::datastructure;
 %shared_ptr(SolAR::datastructure::Image)
 %shared_ptr(SolAR::datastructure::ImageMarker)
 %shared_ptr(SolAR::datastructure::Keyframe)
+%shared_ptr(SolAR::datastructure::KeyframeCollection)
+%shared_ptr(SolAR::datastructure::KeyframeRetrieval)
 %shared_ptr(SolAR::datastructure::Keypoint)
+%shared_ptr(SolAR::datastructure::Lockable)
+%shared_ptr(SolAR::datastructure::Map)
 %shared_ptr(SolAR::datastructure::PointCloud)
 %shared_ptr(SolAR::datastructure::PrimitiveInformation)
 %shared_ptr(SolAR::datastructure::SquaredBinaryPattern)
@@ -114,13 +125,17 @@ using namespace SolAR::datastructure;
 %rename(CloudPointList) std::vector<SRef<SolAR::datastructure::CloudPoint>>;
 %template(CloudPointList) std::vector<SRef<SolAR::datastructure::CloudPoint>>;
 
-///
+// rename lock to _lock as lock is already a C# keyword
+%rename(_lock) lock;
 
+%ignore SolAR::datastructure::Lockable;
+// TODO : Add std::unique_lock not available in std swig files
+%include "datastructure/Lockable.h"
 %ignore SolAR::datastructure::BufferInternal::data() const;
+
 %include "datastructure/BufferInternal.hpp"
 
 //TODO
-//#include "BufferInternal.hpp"
 %ignore SolAR::datastructure::DescriptorView::DescriptorView(const DescriptorView &);
 //%rename (EgalOperator) SolAR::datastructure::DescriptorView::operator=;
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Descriptor.*::operator.*$";
@@ -132,75 +147,54 @@ using namespace SolAR::datastructure;
 %include "datastructure/DescriptorBuffer.h"
 %template(DescriptorView8U) SolAR::datastructure::DescriptorViewTemplate<uint8_t>;
 %template(DescriptorView32F) SolAR::datastructure::DescriptorViewTemplate<float>;
-
 %ignore SolAR::datastructure::PrimitiveInformation;
 %include "datastructure/PrimitiveInformation.h"
-
 %include "Eigen.i"
 %include "datastructure/MathDefinitions.h"
 %include "MathDefinitions.i"
-
-//#include "datastructure/MathDefinitions.h"
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Point.D.::operator.*$";
 %include "datastructure/GeometryDefinitions.h"
-
-//#include <datastructure/GeometryDefinitions.h>
 %include "datastructure/CameraDefinitions.h"
-
-//#include "datastructure/GeometryDefinitions.h"
-//#include "datastructure/DescriptorBuffer.h"
-//#include "datastructure/PrimitiveInformation.h"
 %include "datastructure/CloudPoint.h"
-
-//#include "datastructure/GeometryDefinitions.h"
-//#include "datastructure/CloudPoint.h"
 %ignore SolAR::datastructure::PointCloud::operator=;
+%rename (addSRefPoint) SolAR::datastructure::PointCloud::addPoint(boost::shared_ptr<SolAR::datastructure::CloudPoint> const);
 %include "datastructure/PointCloud.h"
-
-//#include "GeometryDefinitions.h"
-//#include "datastructure/MathDefinitions.h"
 %include "datastructure/CoordinateSystem.h"
-
+%ignore SolAR::datastructure::CovisibilityGraph::CovisibilityGraph(const CovisibilityGraph&);
+%ignore SolAR::datastructure::CovisibilityGraph::operator=;
+%include "datastructure/CovisibilityGraph.h"
 %include "datastructure/DescriptorMatch.h"
 
-//#include "datastructure/MathDefinitions.h"
-//#include "datastructure/GeometryDefinitions.h"
 namespace std {namespace chrono {namespace system_clock{class time_point{};}}}
 %include "datastructure/Identification.h"
-
-//#include "GeometryDefinitions.h"
 %ignore SolAR::datastructure::Image::data() const;
 %ignore SolAR::datastructure::Image::extractRegion(Rectanglei region);
 %ignore SolAR::datastructure::Image::extractRegion(Rectanglei region, uint32_t channel);
 %include "datastructure/Image.h"
-
-//#include "datastructure/GeometryDefinitions.h"
 %include "datastructure/Keypoint.h"
-
-//#include "datastructure/GeometryDefinitions.h"
-//#include "datastructure/Image.h"
-//#include "datastructure/Keypoint.h"
-//#include "datastructure/DescriptorBuffer.h"
-//#include "datastructure/DescriptorMatch.h"
-//#include "datastructure/CloudPoint.h"
 %include "datastructure/Frame.h"
-
-//#include "datastructure/GeometryDefinitions.h"
-//#include "Frame.h"
 %include "datastructure/Keyframe.h"
+%rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::KeyframeCollection.*::operator.*$";
+%ignore SolAR::datastructure::KeyframeCollection::KeyframeCollection(const KeyframeCollection&);
+%rename (addSRefKeyframe) SolAR::datastructure::KeyframeCollection::addKeyframe(boost::shared_ptr<SolAR::datastructure::Keyframe> const);
+%include "datastructure/KeyframeCollection.h"
+%rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::KeyframeRetrieval.*::operator.*$";
+%ignore SolAR::datastructure::KeyframeRetrieval::KeyframeRetrieval(const KeyframeRetrieval&);
+%include "datastructure/KeyframeRetrieval.h"
+%rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Map.*::operator.*$";
+// TODO : Add std::unique_lock not available in std swig files
+%ignore SolAR::datastructure::Map::getIdentification;
+%ignore SolAR::datastructure::Map::getCoordinateSystem;
+%ignore SolAR::datastructure::Map::getPointCloud;
+%ignore SolAR::datastructure::Map::getKeyframeCollection;
+%ignore SolAR::datastructure::Map::getCovisibilityGraph;
+%ignore SolAR::datastructure::Map::getKeyframeRetrieval;
+%include "datastructure/Map.h"
 
-//#include "datastructure/MathDefinitions.h"
 namespace SolAR {namespace datastructure {class SquaredBinaryPatternMatrix{};}} //TODO: This a matrix with runtime dimensions
 %include "datastructure/SquaredBinaryPattern.h"
-
 %include "datastructure/Trackable.h"
-
-//#include <datastructure/Trackable.h>
-//#include <datastructure/GeometryDefinitions.h>
 %include "datastructure/Trackable2D.h"
-
-//#include <datastructure/SquaredBinaryPattern.h>
-//#include <datastructure/Trackable2D.h>
 %include "datastructure/FiducialMarker.h"
 %include "datastructure/ImageMarker.h"
 ///
@@ -221,6 +215,7 @@ EMPTY_POINTER(CamDistortion)
 EMPTY_POINTER(CamCalibration)
 EMPTY_POINTER(CloudPoint)
 EMPTY_POINTER(CoordinateSystem)
+EMPTY_POINTER(CovisibilityGraph)
 EMPTY_POINTER(DescriptorBuffer)
 EMPTY_POINTER(DescriptorMatch)
 EMPTY_POINTER(FiducialMarker)
@@ -239,7 +234,10 @@ EMPTY_POINTER(Identification)
 EMPTY_POINTER(Image)
 EMPTY_POINTER(ImageMarker)
 EMPTY_POINTER(Keyframe)
+EMPTY_POINTER(KeyframeCollection)
+EMPTY_POINTER(KeyframeRetrieval)
 EMPTY_POINTER(Keypoint)
+EMPTY_POINTER(Map)
 EMPTY_POINTER(Transform2Df)
 EMPTY_POINTER(Transform3Df)
 EMPTY_POINTER(Vector3f)

@@ -27,8 +27,8 @@ SET OPTIONS=^
  -I"./interfaces" ^
  -I"./swig/include" ^
  -I"./swig" ^
- -I"%REMAKEN_PKG_ROOT%/packages/%COMPILER%/xpcf/%XPCF_VERSION%/interfaces" ^
- -I"%REMAKEN_PKG_ROOT%/packages/SolARBuild/%COMPILER%/SolARFramework/%SOLAR_VERSION%/interfaces" ^
+ -I"%XPCF_MODULE_ROOT%/xpcf/%XPCF_VERSION%/interfaces" ^
+ -I"%XPCF_MODULE_ROOT%/SolARBuild/SolARFramework/%SOLAR_VERSION%/interfaces" ^
  -DXPCF_USE_BOOST ^
  -DSWIG_CSHARP_NO_WSTRING_HELPER ^
  -dllimport SolARPipelineManager ^
@@ -66,7 +66,7 @@ ECHO ----------------------- Patch completed -----------------------
 ECHO ----------------------- Copy to REMAKEN_PKG_ROOT -----------------------
 
 SET SOLAR_WRAPPER_VERSION=0.9.0
-SET OUT=%REMAKEN_PKG_ROOT%/packages/SolARBuild/%COMPILER%/SolARPipelineManager/%SOLAR_WRAPPER_VERSION%/%LANG%
+SET OUT=%XPCF_MODULE_ROOT%/SolARBuild/SolARPipelineManager/%SOLAR_WRAPPER_VERSION%/%LANG%
 
 IF EXIST "%OUT%" RMDIR "%OUT%" /S /Q
 XCOPY /S /R /I /Q /Y "%LANG%" "%OUT%"
