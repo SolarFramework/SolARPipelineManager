@@ -29,7 +29,7 @@ fi
 
 echo "Generate SolARPipelineManager csharp interfaces with SWIG"
 
-OPTIONS="-c++ -$LANG -fcompact -O -Iswig -Iswig/include -Iinterfaces -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER"
+OPTIONS="-c++ -$LANG -fcompact -O -Iswig -Iswig/include -Iinterfaces -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -dllimport SolARPipelineManager"
 
 for swigFile in swig/*.i ; do
    echo "########"
