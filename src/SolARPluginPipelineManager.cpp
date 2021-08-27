@@ -59,7 +59,7 @@ bool SolARPluginPipelineManager::init( const std::string& conf_path)
     if (m_pipeline == nullptr)
         return false;
 
-    return (m_pipeline->init(xpcfComponentManager)== FrameworkReturnCode::_SUCCESS);
+    return (m_pipeline->init()== FrameworkReturnCode::_SUCCESS);
 
 }
 
