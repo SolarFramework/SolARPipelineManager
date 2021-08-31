@@ -19,7 +19,9 @@ then
 	XPCF_VERSION="$3"
 fi
 
-CSharpFolder=$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARPipelineManager/$SOLAR_VERSION/csharp
+export XPCF_MODULE_ROOT=~/.remaken/packages/$COMPILER
+
+CSharpFolder=$XPCF_MODULE_ROOT/SolARBuild/SolARPipelineManager/$SOLAR_VERSION/csharp
 
 mkdir -p $CSharpFolder
 if [ "$(ls -A $CSharpFolder)" ]; then
@@ -29,7 +31,7 @@ fi
 
 echo "Generate SolARPipelineManager csharp interfaces with SWIG"
 
-OPTIONS="-c++ -$LANG -fcompact -O -Iswig -Iswig/include -Iinterfaces -I$HOME/.remaken/packages/$COMPILER/xpcf/$XPCF_VERSION/interfaces -I$HOME/.remaken/packages/SolARBuild/$COMPILER/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -dllimport SolARPipelineManager"
+OPTIONS="-c++ -$LANG -fcompact -O -Iswig -Iswig/include -Iinterfaces -I$XPCF_MODULE_ROOT/xpcf/$XPCF_VERSION/interfaces -I$XPCF_MODULE_ROOT/SolARBuild/SolARFramework/$SOLAR_VERSION/interfaces -DXPCF_USE_BOOST -DSWIG_CSHARP_NO_WSTRING_HELPER -dllimport SolARPipelineManager"
 
 for swigFile in swig/*.i ; do
    echo "########"
@@ -69,9 +71,8 @@ echo ------------------ Patch completed -----------------------------
 
 echo ------------------ Copy to REMAKEN_PKG_ROOT -----------------------------
 
-export REMAKEN_PKG_ROOT=~/.remaken
 
-OUT=$REMAKEN_PKG_ROOT/packages/SolARBuild/$COMPILER/SolARPipelineManager/$SOLAR_VERSION/$LANG
+OUT=$XPCF_MODULE_ROOT/SolARBuild/SolARPipelineManager/$SOLAR_VERSION/$LANG
 mkdir -p $OUT
 if [ "$(ls -A $OUT)" ]; then
     echo "Suppress csharp interfaces in $OUT/"
