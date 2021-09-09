@@ -78,6 +78,12 @@ using namespace SolAR::datastructure;
 %template(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
 %rename(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
 %template(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
+%rename(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
+%template(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
+%rename(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
+%template(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
+%rename(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
+%template(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
 
 // Vector<T>
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::DescriptorMatch)
@@ -213,6 +219,8 @@ EMPTY_POINTER(BufferInternal)
 EMPTY_POINTER(CameraParameters)
 EMPTY_POINTER(CamDistortion)
 EMPTY_POINTER(CamCalibration)
+EMPTY_POINTER(RectificationParameters)
+EMPTY_POINTER(CamRigParameters)
 EMPTY_POINTER(CloudPoint)
 EMPTY_POINTER(CoordinateSystem)
 EMPTY_POINTER(CovisibilityGraph)
