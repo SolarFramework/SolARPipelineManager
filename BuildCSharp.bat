@@ -69,7 +69,7 @@ SET SOLAR_WRAPPER_VERSION=0.9.0
 SET OUT=%XPCF_MODULE_ROOT%/SolARBuild/SolARPipelineManager/%SOLAR_WRAPPER_VERSION%/%LANG%
 
 IF EXIST "%OUT%" RMDIR "%OUT%" /S /Q
-XCOPY /S /R /I /Q /Y "%LANG%" "%OUT%"
+ROBOCOPY "%LANG%" "%OUT%" /s /z
 
 ECHO ----------------------- Copy completed -----------------------
 
