@@ -32,6 +32,7 @@ using namespace SolAR::datastructure;
 
 %include "Swig.i"
 
+
 %import (module="XPCF.Core") "XPCF_Core.i"
 %import (module="SolAR.Core") "SolAR_Core.i"
 
@@ -73,17 +74,6 @@ using namespace SolAR::datastructure;
 %shared_ptr(SolAR::datastructure::Point2Df)
 %shared_ptr(SolAR::datastructure::Contour2Df)
 
-// Map<T>
-%rename(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
-%template(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
-%rename(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
-%template(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
-%rename(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
-%template(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
-%rename(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
-%template(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
-%rename(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
-%template(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
 
 // Vector<T>
 //SWIG_STD_VECTOR_ENHANCED(SolAR::datastructure::DescriptorMatch)
@@ -170,6 +160,19 @@ using namespace SolAR::datastructure;
 %ignore SolAR::datastructure::CovisibilityGraph::operator=;
 %include "datastructure/CovisibilityGraph.h"
 %include "datastructure/DescriptorMatch.h"
+
+// Map<T>
+%rename(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
+%template(MapIntCloudPoint) std::map<unsigned int, SolAR::datastructure::CloudPoint, std::less<unsigned int>>;
+%rename(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
+%template(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
+%rename(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
+%template(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
+%rename(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
+%template(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
+%rename(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
+%template(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
+
 
 namespace std {namespace chrono {namespace system_clock{class time_point{};}}}
 %include "datastructure/Identification.h"

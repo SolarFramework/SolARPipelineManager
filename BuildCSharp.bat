@@ -65,8 +65,7 @@ ECHO ----------------------- Patch completed -----------------------
 
 ECHO ----------------------- Copy to REMAKEN_PKG_ROOT -----------------------
 
-SET SOLAR_WRAPPER_VERSION=0.9.0
-SET OUT=%XPCF_MODULE_ROOT%/SolARBuild/SolARPipelineManager/%SOLAR_WRAPPER_VERSION%/%LANG%
+SET OUT=%XPCF_MODULE_ROOT%/SolARBuild/SolARPipelineManager/%SOLAR_VERSION%/%LANG%
 
 IF EXIST "%OUT%" RMDIR "%OUT%" /S /Q
 ROBOCOPY "%LANG%" "%OUT%" /s /z
