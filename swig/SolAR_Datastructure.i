@@ -168,10 +168,12 @@ using namespace SolAR::datastructure;
 %template(MapIntInt) std::map<unsigned int, unsigned int, std::less<unsigned int>>;
 %rename(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
 %template(MapIntCamParams) std::map<unsigned int, SolAR::datastructure::CameraParameters, std::less<unsigned int>>;
-%rename(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
-%template(MapPairIntIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, SolAR::datastructure::Transform3Df>;
-%rename(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
-%template(MapPairIntIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>>;
+%rename(PairUIntUInt) std::pair<unsigned int, unsigned int>;
+%template(PairUIntUInt) std::pair<unsigned int, unsigned int>;
+%rename(MapPairUIntUIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, Eigen::Transform<float,3,Eigen::Affine, Eigen::RowMajor>, std::less<std::pair<unsigned int, unsigned int>>>;
+%template(MapPairUIntUIntTransform3D) std::map<std::pair<unsigned int, unsigned int>, Eigen::Transform<float,3,Eigen::Affine, Eigen::RowMajor>, std::less<std::pair<unsigned int, unsigned int>>>;
+%rename(MapPairUIntUIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>, std::less<std::pair<unsigned int, unsigned int>>>;
+%template(MapPairUIntUIntPairRectParamsRectParams) std::map<std::pair<unsigned int, unsigned int>, std::pair<SolAR::datastructure::RectificationParameters, SolAR::datastructure::RectificationParameters>, std::less<std::pair<unsigned int, unsigned int>>>;
 
 
 namespace std {namespace chrono {namespace system_clock{class time_point{};}}}
