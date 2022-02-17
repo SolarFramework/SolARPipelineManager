@@ -12,7 +12,7 @@ GOTO :SWIG
 ECHO ----------------------- SWIG wrapping -----------------------
 
 SET SOLAR_VERSION=0.11.0
-SET XPCF_VERSION=2.5.0
+SET XPCF_VERSION=2.5.1
 SET OUT=src/swig
 
 IF NOT EXIST "%OUT%" MKDIR "%OUT%"

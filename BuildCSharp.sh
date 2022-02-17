@@ -1,6 +1,6 @@
 COMPILER="linux-gcc"
 SOLAR_VERSION=0.11.0
-XPCF_VERSION=2.5.0
+XPCF_VERSION=2.5.1
 LANG="csharp"
 OUT="src/swig"
 
