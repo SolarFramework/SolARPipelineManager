@@ -11,7 +11,7 @@ GOTO :SWIG
 :SWIG
 ECHO ----------------------- SWIG wrapping -----------------------
 
-SET SOLAR_VERSION=0.11.0
+SET SOLAR_VERSION=1.0.0
 SET XPCF_VERSION=2.5.1
 SET OUT=src/swig
 
