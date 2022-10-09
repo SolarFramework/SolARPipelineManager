@@ -3,6 +3,7 @@
 //#include "datastructure/BufferInternal.hpp" //TODO: Does not include its own dependencies
 //#include "datastructure/Lockable.h"
 #include "datastructure/CameraDefinitions.h"
+#include "datastructure/CameraParametersCollection.h"
 #include "datastructure/CloudPoint.h"
 #include "datastructure/CoordinateSystem.h"
 #include "datastructure/CovisibilityGraph.h"
@@ -46,6 +47,7 @@ using namespace SolAR::datastructure;
 
 // SRef
 %shared_ptr(SolAR::datastructure::CameraDefinition)
+%shared_ptr(SolAR::datastructure::CameraParametersCollection)
 %shared_ptr(SolAR::datastructure::CloudPoint)
 %shared_ptr(SolAR::datastructure::CoordinateSystem)
 %shared_ptr(SolAR::datastructure::CovisibilityGraph)
@@ -189,12 +191,17 @@ namespace std {namespace chrono {namespace system_clock{class time_point{};}}}
 %ignore SolAR::datastructure::KeyframeCollection::KeyframeCollection(const KeyframeCollection&);
 %rename (addSRefKeyframe) SolAR::datastructure::KeyframeCollection::addKeyframe(boost::shared_ptr<SolAR::datastructure::Keyframe> const);
 %include "datastructure/KeyframeCollection.h"
+%rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::CameraParametersCollection.*::operator.*$";
+%ignore SolAR::datastructure::CameraParametersCollection::CameraParametersCollection(const CameraParametersCollection&);
+%rename (addSRefKeyframe) SolAR::datastructure::CameraParametersCollection::addKeyframe(boost::shared_ptr<SolAR::datastructure::Keyframe> const);
+%include "datastructure/CameraParametersCollection.h"
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::KeyframeRetrieval.*::operator.*$";
 %ignore SolAR::datastructure::KeyframeRetrieval::KeyframeRetrieval(const KeyframeRetrieval&);
 %include "datastructure/KeyframeRetrieval.h"
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Map.*::operator.*$";
 // TODO : Add std::unique_lock not available in std swig files
 %ignore SolAR::datastructure::Map::getIdentification;
+%ignore SolAR::datastructure::Map::CameraParametersCollection;
 %ignore SolAR::datastructure::Map::getCoordinateSystem;
 %ignore SolAR::datastructure::Map::getPointCloud;
 %ignore SolAR::datastructure::Map::getKeyframeCollection;
@@ -222,6 +229,7 @@ void * newPointer() {return new SRef<T>();};
 
 EMPTY_POINTER(BufferInternal)
 EMPTY_POINTER(CameraParameters)
+EMPTY_POINTER(CameraParametersCollection)
 EMPTY_POINTER(CamDistortion)
 EMPTY_POINTER(CamCalibration)
 EMPTY_POINTER(RectificationParameters)
