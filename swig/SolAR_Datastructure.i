@@ -201,7 +201,7 @@ namespace std {namespace chrono {namespace system_clock{class time_point{};}}}
 %rename("$ignore", regextarget=1, fullname=1) "SolAR::datastructure::Map.*::operator.*$";
 // TODO : Add std::unique_lock not available in std swig files
 %ignore SolAR::datastructure::Map::getIdentification;
-%ignore SolAR::datastructure::Map::CameraParametersCollection;
+%ignore SolAR::datastructure::Map::getCameraParametersCollection;
 %ignore SolAR::datastructure::Map::getCoordinateSystem;
 %ignore SolAR::datastructure::Map::getPointCloud;
 %ignore SolAR::datastructure::Map::getKeyframeCollection;
